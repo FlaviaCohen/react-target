@@ -11,11 +11,13 @@
     "title": "Sign up",
     "alreadyHaveAccount": "Sign in",
     "labels": {
+      "name": "Name",
       "email": "Email",
       "password": "Password",
       "passwordConfirmation": "Confirm password"
     },
     "errors": {
+      "nameMsg": "Must provide a name",
       "emailMsg": "Must provide an email",
       "passwordMsg": "Password must have at least 8 characters, a letter and a number",
       "passwordConfirmationMsg": "Passwords must match"

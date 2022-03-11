@@ -29,6 +29,7 @@ const Signup = () => {
 
   const schema = z
     .object({
+      //name: z.string().name({ message: t('signup.errors.nameMsg') }),
       email: z.string().email({ message: t('signup.errors.emailMsg') }),
       password: z.string().regex(PASSWORD_REGEX, { message: t('signup.errors.passwordMsg') }),
       passwordConfirmation: z
@@ -69,6 +70,18 @@ const Signup = () => {
       <div className="signUp__left">
         <form className="signUp__form" onSubmit={handleSubmit(onSubmit)} noValidate>
           <h1 className="signUp__title">{t('signup.title')}</h1>
+
+          <label className="signUp__label" htmlFor="name">
+            {t('signup.labels.name')}
+          </label>
+          <Input
+            register={register}
+            type="name"
+            name="name"
+            error={errors.name}
+            handleFocus={handleFocus}
+          />
+
           <label className="signUp__label" htmlFor="email">
             {t('signup.labels.email')}
           </label>
