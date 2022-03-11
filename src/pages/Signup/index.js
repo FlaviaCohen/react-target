@@ -89,6 +89,7 @@ const Signup = () => {
             name="password"
             error={errors.password}
             handleFocus={handleFocus}
+            placeholder="min. 6 characters long"
           />
 
           <label className="signUp__label" htmlFor="password">
@@ -109,7 +110,9 @@ const Signup = () => {
           <Button type="submit" disabled={isLoading}>
             {t('signup.title')}
           </Button>
-          <Link to={routesPaths.login}>{t('signup.alreadyHaveAccount')}</Link>
+          <Link to={routesPaths.login} className="signUp__link">
+            {t('signup.alreadyHaveAccount')}
+          </Link>
         </form>
       </div>
       <div className="signUp__right">

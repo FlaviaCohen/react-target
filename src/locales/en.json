@@ -9,7 +9,7 @@
   },
   "signup": {
     "title": "Sign up",
-    "alreadyHaveAccount": "Already have an account? Log in",
+    "alreadyHaveAccount": "Sign in",
     "labels": {
       "email": "Email",
       "password": "Password",
@@ -22,8 +22,8 @@
     }
   },
   "login": {
-    "title": "Log in",
-    "dontHaveAccountMsg": "Don't have an account? Sign up",
+    "title": "Sign in",
+    "dontHaveAccountMsg": "Sign up",
     "labels": {
       "email": "Email",
       "password": "Password"
