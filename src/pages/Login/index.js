@@ -14,8 +14,6 @@ import routesPaths from 'routes/routesPaths';
 import Input from 'components/form/Input';
 import Button from 'components/common/Button';
 
-import '../../styles/form.css';
-
 const Login = () => {
   const t = useTranslation();
   const dispatch = useDispatch();

@@ -49,6 +49,7 @@ $breakpoint arguement choices:
 @mixin default-font-style {
   font-family: $main-font;
   letter-spacing: 0.15rem;
+  text-transform: uppercase;
 }
 
 @mixin black-button {
