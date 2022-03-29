@@ -24,7 +24,6 @@ const Signup = () => {
 
   const schema = z
     .object({
-      //name: z.string().name({ message: t('signup.errors.nameMsg') }),
       email: z.string().email({ message: t('signup.errors.emailMsg') }),
       password: z.string().regex(PASSWORD_REGEX, { message: t('signup.errors.passwordMsg') }),
       passwordConfirmation: z
