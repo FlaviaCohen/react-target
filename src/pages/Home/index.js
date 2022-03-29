@@ -1,4 +1,4 @@
-import Button from 'components/common/Button';
+import Button from 'components/common/Button/index.js';
 import useTranslation from 'hooks/useTranslation';
 import { useLogoutMutation } from 'services/auth/auth';
 
