@@ -63,8 +63,10 @@ const Login = () => {
         </p>
       </div>
       <div className="login__form-container">
-        <form className="login__form" onSubmit={handleSubmit(onSubmit)} noValidate>
-          <label htmlFor="email">{t('login.labels.email')}</label>
+        <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+          <label className="form__label" htmlFor="email">
+            {t('login.labels.email')}
+          </label>
           <Input
             register={register}
             type="email"
@@ -73,7 +75,9 @@ const Login = () => {
             handleFocus={handleFocus}
           />
 
-          <label htmlFor="password">{t('login.labels.password')}</label>
+          <label className="form__label" htmlFor="password">
+            {t('login.labels.password')}
+          </label>
           <Input
             register={register}
             type="password"
@@ -87,7 +91,7 @@ const Login = () => {
           <Button type="submit" disabled={isLoading}>
             {t('login.title')}
           </Button>
-          <Link className="login__signup-link" to={routesPaths.signup}>
+          <Link className="form__link" to={routesPaths.signup}>
             {t('login.dontHaveAccountMsg')}
           </Link>
         </form>

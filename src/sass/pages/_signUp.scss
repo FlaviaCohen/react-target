@@ -33,18 +33,7 @@
     }
   }
 
-  &__form {
-    width: 18rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__label {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-  }
+ 
 
   &__svg {
     &-play {
@@ -78,17 +67,5 @@
     font-size: 2rem;
     font-weight: 600;
     margin: 3.2rem 0 3.8rem;
-  }
-
-  &__link {
-    width: 12rem;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 1.9rem 0 8rem;
-    padding-top: 1rem;
-    border-top: 0.5px solid $black;
-    text-decoration: none;
-    color: $black;
   }
 }
