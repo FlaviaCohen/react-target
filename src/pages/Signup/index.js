@@ -6,7 +6,7 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 import { z } from 'zod';
 
 import Input from 'components/form/Input';
-import Button from 'components/common/Button/index.js';
+import Button from 'components/common/Button';
 import routesPaths from 'routes/routesPaths';
 import useTranslation from 'hooks/useTranslation';
 import useAuth from 'hooks/useAuth';
