@@ -8,8 +8,10 @@
   &__left,
   &__right {
     width: 50%;
+    min-height: 100vh;
     @include respond(phone) {
       width: 100%;
+      height: unset;
     }
   }
 
@@ -32,8 +34,6 @@
       position: relative;
     }
   }
-
- 
 
   &__svg {
     &-play {

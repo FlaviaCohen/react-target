@@ -13,7 +13,7 @@ import useTranslation from 'hooks/useTranslation';
 import routesPaths from 'routes/routesPaths';
 import Input from 'components/form/Input';
 import Button from 'components/common/Button';
-import smiles from '../../assets/smiles.svg';
+import smiles from 'assets/smiles.svg';
 
 const Login = () => {
   const t = useTranslation();
