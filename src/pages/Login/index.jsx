@@ -11,8 +11,8 @@ import { useLoginMutation } from 'services/auth/auth';
 import useAuth from 'hooks/useAuth';
 import useTranslation from 'hooks/useTranslation';
 import routesPaths from 'routes/routesPaths';
-import Input from 'components/form/Input';
-import Button from 'components/common/Button';
+import Input from 'components/form/Input/Input';
+import Button from 'components/common/Button/Button';
 import smiles from 'assets/smiles.svg';
 
 const Login = () => {

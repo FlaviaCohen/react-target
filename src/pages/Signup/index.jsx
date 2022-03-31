@@ -5,8 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { z } from 'zod';
 
-import Input from 'components/form/Input';
-import Button from 'components/common/Button';
+import Input from 'components/form/Input/Input';
+import Button from 'components/common/Button/Button';
 import routesPaths from 'routes/routesPaths';
 import useTranslation from 'hooks/useTranslation';
 import useAuth from 'hooks/useAuth';
