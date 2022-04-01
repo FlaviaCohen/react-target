@@ -5,8 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { z } from 'zod';
 
-import Input from 'components/form/Input';
-import Button from 'components/common/Button';
+import Input from 'components/form/Input/Input';
+import Button from 'components/common/Button/Button';
 import routesPaths from 'routes/routesPaths';
 import useTranslation from 'hooks/useTranslation';
 import useAuth from 'hooks/useAuth';
@@ -61,10 +61,10 @@ const Signup = () => {
   return (
     <div className="signUp">
       <div className="signUp__left">
-        <form className="signUp__form" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
           <h1 className="signUp__title">{t('signup.title')}</h1>
 
-          <label className="signUp__label" htmlFor="name">
+          <label className="form__label" htmlFor="name">
             {t('signup.labels.name')}
           </label>
           <Input
@@ -75,7 +75,7 @@ const Signup = () => {
             handleFocus={handleFocus}
           />
 
-          <label className="signUp__label" htmlFor="email">
+          <label className="form__label" htmlFor="email">
             {t('signup.labels.email')}
           </label>
           <Input
@@ -86,7 +86,7 @@ const Signup = () => {
             handleFocus={handleFocus}
           />
 
-          <label className="signUp__label" htmlFor="password">
+          <label className="form__label" htmlFor="password">
             {t('signup.labels.password')}
           </label>
           <Input
@@ -98,7 +98,7 @@ const Signup = () => {
             placeholder="min. 6 characters long"
           />
 
-          <label className="signUp__label" htmlFor="password">
+          <label className="form__label" htmlFor="password">
             {t('signup.labels.passwordConfirmation')}
           </label>
           <Input
@@ -116,7 +116,7 @@ const Signup = () => {
           <Button type="submit" disabled={isLoading}>
             {t('signup.title')}
           </Button>
-          <Link to={routesPaths.login} className="signUp__link">
+          <Link to={routesPaths.login} className="form__link">
             {t('signup.alreadyHaveAccount')}
           </Link>
         </form>
