@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from './constants/constants';
 import store from 'state/store';
-import App from './App.jsx';
+import App from './App';
 import locales from './locales';
 import './index.css';
 
