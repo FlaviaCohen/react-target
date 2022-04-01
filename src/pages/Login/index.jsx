@@ -86,7 +86,7 @@ const Login = () => {
             handleFocus={handleFocus}
           />
 
-          {error && error.data && <p className="error-message">{error.data.errors}</p>}
+          {error && error.data && <p className="login__error">{error.data.errors}</p>}
 
           <Button type="submit" disabled={isLoading}>
             {t('login.title')}
