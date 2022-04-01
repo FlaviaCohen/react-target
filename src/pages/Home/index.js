@@ -4,8 +4,6 @@ import { useLogoutMutation } from 'services/auth/auth';
 
 import logo from 'assets/logo.svg';
 
-import './styles.css';
-
 const Home = () => {
   const t = useTranslation();
   const [logout, { isLoading }] = useLogoutMutation();

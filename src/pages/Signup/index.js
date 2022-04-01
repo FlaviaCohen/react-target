@@ -14,8 +14,6 @@ import { api } from 'services/api';
 import { useSignupMutation } from 'services/auth/auth';
 import { PASSWORD_REGEX } from 'constants/constants';
 
-import '../../styles/form.css';
-
 const Signup = () => {
   const t = useTranslation();
   const dispatch = useDispatch();
@@ -61,47 +59,68 @@ const Signup = () => {
   }
 
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <h1>{t('signup.title')}</h1>
-        <label htmlFor="email">{t('signup.labels.email')}</label>
-        <Input
-          register={register}
-          type="email"
-          name="email"
-          error={errors.email}
-          handleFocus={handleFocus}
-        />
+    <div className="signUp">
+      <div className="signUp__left">
+        <form className="signUp__form" onSubmit={handleSubmit(onSubmit)} noValidate>
+          <h1 className="signUp__title">{t('signup.title')}</h1>
 
-        <label htmlFor="password">{t('signup.labels.password')}</label>
-        <Input
-          register={register}
-          type="password"
-          name="password"
-          error={errors.password}
-          handleFocus={handleFocus}
-        />
+          <label className="signUp__label" htmlFor="name">
+            {t('signup.labels.name')}
+          </label>
+          <Input
+            register={register}
+            type="name"
+            name="name"
+            error={errors.name}
+            handleFocus={handleFocus}
+          />
 
-        <label htmlFor="password">{t('signup.labels.passwordConfirmation')}</label>
-        <Input
-          register={register}
-          type="password"
-          name="passwordConfirmation"
-          error={errors.passwordConfirmation}
-          handleFocus={handleFocus}
-        />
+          <label className="signUp__label" htmlFor="email">
+            {t('signup.labels.email')}
+          </label>
+          <Input
+            register={register}
+            type="email"
+            name="email"
+            error={errors.email}
+            handleFocus={handleFocus}
+          />
 
-        {error && error.data && (
-          <p className="error-message">{error.data.errors?.full_messages[0]}</p>
-        )}
+          <label className="signUp__label" htmlFor="password">
+            {t('signup.labels.password')}
+          </label>
+          <Input
+            register={register}
+            type="password"
+            name="password"
+            error={errors.password}
+            handleFocus={handleFocus}
+            placeholder="min. 6 characters long"
+          />
 
-        <div className="button-container">
+          <label className="signUp__label" htmlFor="password">
+            {t('signup.labels.passwordConfirmation')}
+          </label>
+          <Input
+            register={register}
+            type="password"
+            name="passwordConfirmation"
+            error={errors.passwordConfirmation}
+            handleFocus={handleFocus}
+          />
+
+          {error && error.data && (
+            <p className="error-message">{error.data.errors?.full_messages[0]}</p>
+          )}
+
           <Button type="submit" disabled={isLoading}>
             {t('signup.title')}
           </Button>
-          <Link to={routesPaths.login}>{t('signup.alreadyHaveAccount')}</Link>
-        </div>
-      </form>
+          <Link to={routesPaths.login} className="signUp__link">
+            {t('signup.alreadyHaveAccount')}
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };

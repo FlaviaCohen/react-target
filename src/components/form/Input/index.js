@@ -1,11 +1,15 @@
 import { string, func, object } from 'prop-types';
-import cn from 'classnames';
-import './styles.css';
 
-const Input = ({ register, type = 'text', name, error, handleFocus }) => (
-  <div className="Input">
-    <input className={cn({ error })} type={type} {...register(name)} onFocus={handleFocus} />
-    <small className="error-message">{error?.message}</small>
+const Input = ({ register, type = 'text', name, error, handleFocus, placeholder = '' }) => (
+  <div className="input__container">
+    <input
+      className="input__textbox"
+      type={type}
+      {...register(name)}
+      placeholder={placeholder}
+      onFocus={handleFocus}
+    />
+    <small className="input__error">{error?.message}</small>
   </div>
 );
 

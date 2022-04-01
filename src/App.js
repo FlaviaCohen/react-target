@@ -1,12 +1,14 @@
 import { Switch, BrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
+import Layout from 'components/common/Layout/Layout';
+
 import RouteFromPath from 'components/routes/RouteFromPath';
 import useTranslation from 'hooks/useTranslation';
 import useAuth from 'hooks/useAuth';
 import routes from 'routes';
 
-import 'styles/variables.css';
+import './sass/main.scss';
 
 function App() {
   const t = useTranslation();
@@ -17,13 +19,21 @@ function App() {
       <Helmet>
         <title>{t('global.pageTitle')}</title>
       </Helmet>
-      <BrowserRouter>
-        <Switch>
-          {routes.map(route => (
-            <RouteFromPath key={`route-${route.path}`} {...route} authenticated={authenticated} />
-          ))}
-        </Switch>
-      </BrowserRouter>
+      <div className="app__container">
+        <BrowserRouter>
+          <Layout>
+            <Switch>
+              {routes.map(route => (
+                <RouteFromPath
+                  key={`route-${route.path}`}
+                  {...route}
+                  authenticated={authenticated}
+                />
+              ))}
+            </Switch>
+          </Layout>
+        </BrowserRouter>
+      </div>
     </>
   );
 }

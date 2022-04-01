@@ -9,21 +9,23 @@
   },
   "signup": {
     "title": "Sign up",
-    "alreadyHaveAccount": "Already have an account? Log in",
+    "alreadyHaveAccount": "Sign in",
     "labels": {
+      "name": "Name",
       "email": "Email",
       "password": "Password",
       "passwordConfirmation": "Confirm password"
     },
     "errors": {
+      "nameMsg": "Must provide a name",
       "emailMsg": "Must provide an email",
       "passwordMsg": "Password must have at least 8 characters, a letter and a number",
       "passwordConfirmationMsg": "Passwords must match"
     }
   },
   "login": {
-    "title": "Log in",
-    "dontHaveAccountMsg": "Don't have an account? Sign up",
+    "title": "Sign in",
+    "dontHaveAccountMsg": "Sign up",
     "labels": {
       "email": "Email",
       "password": "Password"
