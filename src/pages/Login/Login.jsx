@@ -91,6 +91,7 @@ const Login = () => {
           <Button type="submit" disabled={isLoading}>
             {t('login.title')}
           </Button>
+          <p className="login__link--facebook">Connect with facebook</p>
           <Link className="form__link" to={routesPaths.signup}>
             {t('login.dontHaveAccountMsg')}
           </Link>

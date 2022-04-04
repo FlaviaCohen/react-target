@@ -63,6 +63,16 @@
     border-top: 0.5px solid $black;
     text-decoration: none;
     color: $black;
+    cursor: pointer;
+
+    &--facebook {
+      width: 100%;
+      margin: 5.5rem auto 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-align: center;
+      cursor: pointer;
+    }
   }
 
   &__error {
