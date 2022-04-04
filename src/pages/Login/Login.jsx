@@ -15,6 +15,8 @@ import Input from 'components/form/Input/Input';
 import Button from 'components/common/Button/Button';
 import smiles from 'assets/smiles.svg';
 
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+
 const Login = () => {
   const t = useTranslation();
   const dispatch = useDispatch();
@@ -91,8 +93,12 @@ const Login = () => {
           <Button type="submit" disabled={isLoading}>
             {t('login.title')}
           </Button>
-          <p className="login__link--facebook">Connect with facebook</p>
 
+          <FacebookLogin
+            appId="5350250611660053"
+            autoLoad
+            render={() => <button className="login__facebook-button">Connect with facebook</button>}
+          />
           <Link className="form__link" to={routesPaths.signup}>
             {t('login.dontHaveAccountMsg')}
           </Link>
