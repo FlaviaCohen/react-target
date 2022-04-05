@@ -1,7 +1,7 @@
 import routesPaths from './routesPaths';
-import Home from 'pages/Home';
-import Signup from 'pages/Signup';
-import Login from 'pages/Login';
+import Home from 'pages/Home/Home';
+import Signup from 'pages/Signup/Signup';
+import Login from 'pages/Login/Login';
 
 const routes = [
   {
