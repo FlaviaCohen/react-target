@@ -1,5 +1,6 @@
 .header {
   width: 50%;
+  background: $white;
 
   @include respond(phone) {
     width: 100%;
