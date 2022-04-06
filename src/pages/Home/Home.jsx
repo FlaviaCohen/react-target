@@ -1,8 +1,8 @@
 import Button from 'components/common/Button/Button';
 import useTranslation from 'hooks/useTranslation';
 import { useLogoutMutation } from 'services/auth/auth';
-
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import smiles from '../../assets/smiles.svg';
+import Map from '../../components/common/Map/Map';
 
 const Home = () => {
   const t = useTranslation();
@@ -13,11 +13,12 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home__welcome">
-        <h1>{t('home.welcomeMsg')}</h1>
-        <h2>{t('home.title')}</h2>
-        <ul>
-          <li>{t('home.descriptionItem1')}</li>
-          <li>{t('home.descriptionItem2')}</li>
+        <img className="home__smiles" src={smiles} alt="smiles" />
+        <h1 className="home__message">{t('home.welcomeMsg')}</h1>
+        <h2 className="home__title">{t('home.title')}</h2>
+        <ul className="home__list">
+          <li className="home__item">{t('home.descriptionItem1')}</li>
+          <li className="home__item">{t('home.descriptionItem2')}</li>
         </ul>
         <div className="home__logout">
           <Button handleClick={handleLogout} disabled={isLoading}>
@@ -25,18 +26,8 @@ const Home = () => {
           </Button>
         </div>
       </div>
-      <div>
-        <MapContainer center={[51.505, -0.09]} zoom={13}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[51.505, -0.09]}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
+      <div className="home__map">
+        <Map />
       </div>
     </div>
   );
