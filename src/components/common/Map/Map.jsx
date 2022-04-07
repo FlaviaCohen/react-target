@@ -15,12 +15,10 @@ const myIcon = new L.Icon({
 
 const Map = () => {
   return (
-    <div className="map__container">
-      <MapContainer className="map__container" center={position} zoom={20}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={position} icon={myIcon}></Marker>
-      </MapContainer>
-    </div>
+    <MapContainer className="map__container" center={position} zoom={20}>
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <Marker position={position} icon={myIcon}></Marker>
+    </MapContainer>
   );
 };
 
