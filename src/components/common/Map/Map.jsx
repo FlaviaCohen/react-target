@@ -6,7 +6,7 @@ import marker from 'assets/marker.svg';
 
 const position = [-34.881092955217724, -56.17717361591464];
 
-const myIcon = new Icon({
+const markerIcon = new Icon({
   iconUrl: marker,
   iconRetinaUrl: marker,
   popupAnchor: [-0, -0],
@@ -14,10 +14,10 @@ const myIcon = new Icon({
 });
 
 const Map = () => (
-    <MapContainer className="map__container" center={position} zoom={20}>
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <Marker position={position} icon={myIcon}></Marker>
-    </MapContainer>
-  );
+  <MapContainer className="map__container" center={position} zoom={20}>
+    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+    <Marker position={position} icon={markerIcon}></Marker>
+  </MapContainer>
+);
 
 export default Map;
