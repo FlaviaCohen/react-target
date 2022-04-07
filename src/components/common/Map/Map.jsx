@@ -13,13 +13,11 @@ const myIcon = new Icon({
   iconSize: [53, 69],
 });
 
-const Map = () => {
-  return (
+const Map = () => (
     <MapContainer className="map__container" center={position} zoom={20}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={position} icon={myIcon}></Marker>
     </MapContainer>
   );
-};
 
 export default Map;
