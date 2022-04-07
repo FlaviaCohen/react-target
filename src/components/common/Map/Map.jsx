@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import { Icon } from 'leaflet';
 import marker from 'assets/marker.svg';
+
+import { usePosition } from 'hooks/usePosition';
 
 const myIcon = new Icon({
   iconUrl: marker,
@@ -14,11 +16,14 @@ const myIcon = new Icon({
 
 const Map = () => {
   const [position, setPosition] = useState({
-    lat: '-34.881092955217724',
-    lng: '-56.17717361591464',
+    lat: '0',
+    lng: '0',
   });
 
-  const [zoom, setZoom] = useState(20);
+  const [zoom, setZoom] = useState(2);
+
+  const location = usePosition();
+  useEffect(() => {}, []);
 
   return (
     <MapContainer className="map__container" center={position} zoom={zoom}>
