@@ -1,8 +1,8 @@
 import Button from 'components/common/Button/Button';
 import useTranslation from 'hooks/useTranslation';
 import { useLogoutMutation } from 'services/auth/auth';
-import smiles from '../../assets/smiles.svg';
-import Map from '../../components/common/Map/Map';
+import smiles from 'assets/smiles.svg';
+import Map from 'components/common/Map/Map';
 
 const Home = () => {
   const t = useTranslation();
