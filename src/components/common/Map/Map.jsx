@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer, MapConsumer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { Icon } from 'leaflet';
 import marker from 'assets/marker.svg';
 
-import { useLocation } from 'react-router-dom';
 const markerIcon = new Icon({
   iconUrl: marker,
   iconRetinaUrl: marker,
@@ -15,11 +14,6 @@ const markerIcon = new Icon({
 
 const Map = () => {
   const [position, setPosition] = useState({ lat: 0, lng: 0 });
-
-  const [zoom, setZoom] = useState(2);
-
-  const location = useLocation();
-  console.log(location);
 
   const setCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition(
@@ -36,7 +30,7 @@ const Map = () => {
   }, []);
 
   return (
-    <MapContainer className="map__container" center={position} zoom={zoom}>
+    <MapContainer className="map__container" center={position} zoom={3}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={position} icon={markerIcon}></Marker>
     </MapContainer>
