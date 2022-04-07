@@ -10,7 +10,7 @@ const myIcon = new L.Icon({
   iconUrl: marker,
   iconRetinaUrl: marker,
   popupAnchor: [-0, -0],
-  iconSize: [32, 45],
+  iconSize: [53, 69],
 });
 
 const Map = () => {
