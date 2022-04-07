@@ -1,23 +1,25 @@
-import GoogleMapReact from 'google-map-react';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
 import marker from 'assets/marker.svg';
-import markerCircle from 'assets/markerCircle.svg';
+
+const position = [-34.881092955217724, -56.17717361591464];
+
+const myIcon = new L.Icon({
+  iconUrl: marker,
+  iconRetinaUrl: marker,
+  popupAnchor: [-0, -0],
+  iconSize: [32, 45],
+});
 
 const Map = () => {
   return (
     <div className="map__container">
-      <GoogleMapReact
-        defaultCenter={{
-          lat: 59.95,
-          lng: 30.33,
-        }}
-        defaultZoom={11}
-        yesIWantToUseGoogleMapApiInternals={true}
-      >
-        <div className="map__marker">
-          <img className="map__pointer" src={marker} alt="marker" />
-          <img className="map__circle" src={markerCircle} alt="marker circle" />
-        </div>
-      </GoogleMapReact>
+      <MapContainer className="map__container" center={position} zoom={20}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <Marker position={position} icon={myIcon}></Marker>
+      </MapContainer>
     </div>
   );
 };
