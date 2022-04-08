@@ -22,10 +22,12 @@ const LocationMarker = () => {
     });
   }, [map]);
 
-  return !position ? null : (
-    <Marker position={position} icon={markerIcon}>
-      <Popup>You are here.</Popup>
-    </Marker>
+  return (
+    position && (
+      <Marker position={position} icon={markerIcon}>
+        <Popup>You are here.</Popup>
+      </Marker>
+    )
   );
 };
 
