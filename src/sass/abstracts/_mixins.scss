@@ -55,7 +55,6 @@ $breakpoint arguement choices:
 @mixin black-button {
   width: 100%;
   height: 3.7rem;
-  text-transform: uppercase;
   background: $black;
   color: $white;
   box-shadow: $shadow;
@@ -66,4 +65,8 @@ $breakpoint arguement choices:
   @include default-font-style;
   font-size: 1.1rem;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }

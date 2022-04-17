@@ -36,9 +36,15 @@
     margin-bottom: 3rem;
   }
 
-  &__logout {
+  &__btn {
+    display: flex;
     margin: 6.2rem auto 0;
     width: 18rem;
+
+    a {
+      width: 18rem;
+      @include black-button;
+    }
   }
 
   &__map {
