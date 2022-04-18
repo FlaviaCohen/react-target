@@ -15,11 +15,13 @@ const Profile = () => {
 
   const { user } = useAuth();
 
+  const { avatar, username } = user;
+  console.log(user);
   return (
     <div className="profile">
       <h1 className="profile__title">Target</h1>
-      <img src={profile} alt="" className="profile__picture" />
-      <p className="profile__nickname">cbrum</p>
+      <img src={avatar.url ? avatar.url : profile} alt="" className="profile__picture" />
+      <p className="profile__nickname">{username}</p>
       <div className="profile__actions">
         <a href="/profile" className="profile__edit">
           Edit
