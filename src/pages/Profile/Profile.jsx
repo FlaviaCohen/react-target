@@ -16,7 +16,6 @@ const Profile = () => {
   const { user } = useAuth();
 
   const { avatar, username } = user;
-  console.log(user);
   return (
     <div className="profile">
       <h1 className="profile__title">Target</h1>
