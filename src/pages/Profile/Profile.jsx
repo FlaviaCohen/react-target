@@ -16,11 +16,11 @@ const Profile = () => {
   const { user } = useAuth();
 
   const { avatar, username } = user;
-  console.log(user);
+
   return (
     <div className="profile">
       <h1 className="profile__title">Target</h1>
-      <img src={avatar.url ? avatar.url : profile} alt="" className="profile__picture" />
+      <img src={avatar?.url || profile} alt="" className="profile__picture" />
       <p className="profile__nickname">{username}</p>
       <div className="profile__actions">
         <a href="/profile" className="profile__edit">
@@ -57,17 +57,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-/* allow_password_change: false
-avatar: {url: null, normal: {…}, small_thumb: {…}}
-client: "3q44XAf6nNVTBf63UjsmbA"
-email: "flavia.cohen@rootstrap.com"
-first_name: ""
-gender: null
-id: 1457
-last_name: ""
-provider: "email"
-push_token: null
-token: "VqrEKk6S6wWSCNNV4nAmJQ"
-uid: "flavia.cohen@rootstrap.com"
-username: "" */
