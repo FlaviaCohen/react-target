@@ -11,13 +11,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       {children}
-      {authenticated ? (
-        <div className="map">
-          <Map />
-        </div>
-      ) : (
-        <PhoneAppSection />
-      )}
+      {authenticated ? <Map /> : <PhoneAppSection />}
     </>
   );
 };
