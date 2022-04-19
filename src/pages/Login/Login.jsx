@@ -53,54 +53,52 @@ const Login = () => {
   }
 
   return (
-    <>
-      <div className="login">
-        <div className="login__header">
-          <img className="login__smiles" src={smiles} alt="smiling faces" />
-          <h2 className="login__title">Target MVD</h2>
-          <h4 className="login__subtitle">Find people near you & Connect</h4>
-          <p className="login__paragraph">
-            Create a target wherever on the map, specify your interest: Travel, Dating, Music, etc
-            and start conecting with others who share your interest.
-          </p>
-        </div>
-        <div className="login__form-container">
-          <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-            <label className="form__label" htmlFor="email">
-              {t('login.labels.email')}
-            </label>
-            <Input
-              register={register}
-              type="email"
-              name="email"
-              error={errors.email}
-              handleFocus={handleFocus}
-            />
-
-            <label className="form__label" htmlFor="password">
-              {t('login.labels.password')}
-            </label>
-            <Input
-              register={register}
-              type="password"
-              name="password"
-              error={errors.password}
-              handleFocus={handleFocus}
-            />
-
-            {error && error.data && <p className="login__error">{error.data.errors}</p>}
-
-            <Button type="submit" disabled={isLoading}>
-              {t('login.title')}
-            </Button>
-
-            <Link className="form__link" to={routesPaths.signup}>
-              {t('login.dontHaveAccountMsg')}
-            </Link>
-          </form>
-        </div>
+    <div className="login">
+      <div className="login__header">
+        <img className="login__smiles" src={smiles} alt="smiling faces" />
+        <h2 className="login__title">Target MVD</h2>
+        <h4 className="login__subtitle">Find people near you & Connect</h4>
+        <p className="login__paragraph">
+          Create a target wherever on the map, specify your interest: Travel, Dating, Music, etc and
+          start conecting with others who share your interest.
+        </p>
       </div>
-    </>
+      <div className="login__form-container">
+        <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+          <label className="form__label" htmlFor="email">
+            {t('login.labels.email')}
+          </label>
+          <Input
+            register={register}
+            type="email"
+            name="email"
+            error={errors.email}
+            handleFocus={handleFocus}
+          />
+
+          <label className="form__label" htmlFor="password">
+            {t('login.labels.password')}
+          </label>
+          <Input
+            register={register}
+            type="password"
+            name="password"
+            error={errors.password}
+            handleFocus={handleFocus}
+          />
+
+          {error && error.data && <p className="login__error">{error.data.errors}</p>}
+
+          <Button type="submit" disabled={isLoading}>
+            {t('login.title')}
+          </Button>
+
+          <Link className="form__link" to={routesPaths.signup}>
+            {t('login.dontHaveAccountMsg')}
+          </Link>
+        </form>
+      </div>
+    </div>
   );
 };
 
