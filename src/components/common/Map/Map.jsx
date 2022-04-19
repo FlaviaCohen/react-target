@@ -1,6 +1,6 @@
+import LocationMarker from './LocationMarker';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import LocationMarker from './LocationMarker';
 
 const Map = () => {
   return (
