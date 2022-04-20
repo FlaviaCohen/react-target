@@ -57,7 +57,7 @@ const Login = () => {
       <div className="login__header">
         <img className="login__smiles" src={smiles} alt="smiling faces" />
         <h2 className="login__title">Target MVD</h2>
-        <h4 className="login__subtitle">Find people near you & Connect</h4>
+        <h3 className="login__subtitle">Find people near you & Connect</h3>
         <p className="login__paragraph">
           Create a target wherever on the map, specify your interest: Travel, Dating, Music, etc and
           start conecting with others who share your interest.
