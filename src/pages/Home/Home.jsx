@@ -1,14 +1,11 @@
-import Button from 'components/common/Button/Button';
+import { Link } from 'react-router-dom';
+import routesPaths from 'routes/routesPaths';
 import useTranslation from 'hooks/useTranslation';
-import { useLogoutMutation } from 'services/auth/auth';
 import smiles from 'assets/smiles.svg';
 import Map from 'components/common/Map/Map';
 
 const Home = () => {
   const t = useTranslation();
-  const [logout, { isLoading }] = useLogoutMutation();
-
-  const handleLogout = () => logout().then(() => localStorage.removeItem('user'));
 
   return (
     <div className="home">
@@ -20,10 +17,8 @@ const Home = () => {
           <li className="home__item">{t('home.descriptionItem1')}</li>
           <li className="home__item">{t('home.descriptionItem2')}</li>
         </ul>
-        <div className="home__logout">
-          <Button handleClick={handleLogout} disabled={isLoading}>
-            {t('home.logoutBtn')}
-          </Button>
+        <div className="home__btn">
+          <Link to={routesPaths.profile}>{t('home.gotItBtn')}</Link>
         </div>
       </div>
       <div className="home__map">

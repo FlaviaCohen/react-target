@@ -2,6 +2,7 @@ import routesPaths from './routesPaths';
 import Home from 'pages/Home/Home';
 import Signup from 'pages/Signup/Signup';
 import Login from 'pages/Login/Login';
+import Profile from 'pages/Profile/Profile';
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
   {
     path: routesPaths.login,
     component: <Login />,
+  },
+  {
+    path: routesPaths.profile,
+    component: <Profile />,
+    private: true,
   },
 ];
 

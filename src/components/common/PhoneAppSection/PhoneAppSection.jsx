@@ -1,7 +1,7 @@
-import iphone6 from 'assets/iphone6.svg';
-import play from 'assets/play.svg';
 import appstoreButton from 'assets/appstore_button.svg';
 import facebook from 'assets/facebook.svg';
+import iphone6 from 'assets/iphone6.svg';
+import play from 'assets/play.svg';
 import twitter from 'assets/twitter.svg';
 
 const PhoneAppSection = () => {
