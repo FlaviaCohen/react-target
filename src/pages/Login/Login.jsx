@@ -14,7 +14,6 @@ import routesPaths from 'routes/routesPaths';
 import Input from 'components/form/Input/Input';
 import Button from 'components/common/Button/Button';
 import smiles from 'assets/smiles.svg';
-import PhoneAppSection from '../../components/common/PhoneAppSection/PhoneAppSection';
 
 const Login = () => {
   const t = useTranslation();
