@@ -3,6 +3,7 @@ import Home from 'pages/Home/Home';
 import Signup from 'pages/Signup/Signup';
 import Login from 'pages/Login/Login';
 import Profile from 'pages/Profile/Profile';
+import About from 'pages/About/About';
 
 const routes = [
   {
@@ -18,6 +19,10 @@ const routes = [
   {
     path: routesPaths.login,
     component: <Login />,
+  },
+  {
+    path: routesPaths.about,
+    component: <About />,
   },
   {
     path: routesPaths.profile,
