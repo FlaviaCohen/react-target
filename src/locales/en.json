@@ -2,6 +2,10 @@
   "global": {
     "pageTitle": "RS React Redux Base"
   },
+  "header": {
+    "about": "About",
+    "contact": "Contact"
+  },
   "home": {
     "welcomeMsg": "Welcome to TARGET",
     "title": "Find people near you & Connect",

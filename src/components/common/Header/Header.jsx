@@ -2,12 +2,15 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import routesPaths from 'routes/routesPaths';
 import Contact from 'components/Contact/Contact';
+import useTranslation from 'hooks/useTranslation';
 import hamburger from 'assets/hamburger.svg';
 import close from 'assets/close.svg';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const t = useTranslation();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -31,7 +34,7 @@ const Header = () => {
         <div className="header__menu">
           <div className="header__nav">
             <div className="header__item">
-              <Link to={routesPaths.about}>About</Link>
+              <Link to={routesPaths.about}>{t('header.about')}</Link>
             </div>
             <button
               className="header__item"
@@ -39,7 +42,7 @@ const Header = () => {
               onKeyPress={handleContact}
               tabIndex={0}
             >
-              Contact
+              {t('header.contact')}
             </button>
           </div>
         </div>
