@@ -55,7 +55,7 @@ const Contact = ({ isContactOpen, handleContact }) => {
               {t('contact.msgLabel')}*
             </label>
             <Input
-              className={`input__textarea ${errors.message ? 'input__textarea--error' : ''}`}
+              className={`${errors.message ? 'input__textarea--error' : ''}`}
               register={register}
               name="message"
               type="text"

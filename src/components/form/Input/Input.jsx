@@ -14,7 +14,7 @@ const Input = ({
   <div className="input__container">
     {isTextArea ? (
       <textarea
-        className={`input__textbox ${className ? className : ''}`}
+        className={`input__textarea ${className ? className : ''}`}
         type={type}
         {...register(name)}
         placeholder={placeholder}

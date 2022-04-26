@@ -11,7 +11,10 @@
 
   &__textbox,
   &__textbox:focus,
-  &__textbox:active {
+  &__textbox:active,
+  &__textarea,
+  &__textarea:focus,
+  &__textarea:active {
     width: 100%;
     height: 3.7rem;
     border: 0.5px solid $dark-grey;
