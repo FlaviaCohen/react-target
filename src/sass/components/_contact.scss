@@ -42,10 +42,23 @@
   &__title {
     text-transform: none;
     font-size: 1.8rem;
-    margin: 1.1rem auto 2.3rem;
+    margin-top: 1.1rem;
+    text-align: center;
+  }
+
+  &__subtitle {
+    text-transform: none;
+    font-size: 1.8rem;
+    margin: 0 auto 25rem;
+    font-weight: 400;
+    text-align: center;
   }
 
   &__form-container {
     width: 43rem;
+  }
+
+  &__feedback {
+    margin: 10rem auto 0;
   }
 }

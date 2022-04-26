@@ -53,6 +53,7 @@
     "emailLabel": "Email",
     "msgLabel": "Message",
     "sendBtn": "Send",
+    "sendingBtn": "Sending...",
     "errors": {
       "required": "Both fields are mandatory",
       "emailMsg": "The email you entered is invalid"
