@@ -57,6 +57,12 @@
     "errors": {
       "required": "Both fields are mandatory",
       "emailMsg": "The email you entered is invalid"
+    },
+    "feedback": {
+      "successTitle": "Thanks for getting in touch!",
+      "successSubtitle": "We’ll get back to you as soon as we can.",
+      "errorTitle": "Opps!",
+      "errorSubtitle": "An error has occured while sending your message."
     }
   }
 }

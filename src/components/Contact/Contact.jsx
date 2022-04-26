@@ -96,14 +96,14 @@ const Contact = ({ isContactOpen, handleContact }) => {
         )}
         {feedback.success && (
           <div className="contact__feedback">
-            <h1 className="contact__title">Thanks for getting in touch! </h1>
-            <h2 className="contact__subtitle">We’ll get back to you as soon as we can.</h2>
+            <h1 className="contact__title">{t('contact.feedback.successTitle')}</h1>
+            <h2 className="contact__subtitle">{t('contact.feedback.successSubtitle')}</h2>
           </div>
         )}
         {feedback.error && (
           <div className="contact__feedback">
-            <h1 className="contact__title">Opps!</h1>
-            <h2 className="contact__subtitle">An error has occured while sending your message.</h2>
+            <h1 className="contact__title">{t('contact.feedback.errorTitle')}</h1>
+            <h2 className="contact__subtitle">{t('contact.feedback.errorSubtitle')}</h2>
           </div>
         )}
       </div>
