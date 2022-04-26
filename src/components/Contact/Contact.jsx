@@ -39,29 +39,33 @@ const Contact = ({ isContactOpen, handleContact }) => {
         </div>
         <img src={smiles} alt="smiles" className="contact__smiles" />
         <h1 className="contact__title">{t('contact.title')}</h1>
-        <form className="form contact__form" onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="" className="form__label">
-            {t('contact.emailLabel')}*
-          </label>
-          <Input
-            className={`${errors.email ? 'input__textbox--error' : ''}`}
-            register={register}
-            name="email"
-            type="text"
-            error={errors.email}
-          />
-          <label htmlFor="" className="form__label">
-            {t('contact.msgLabel')}*
-          </label>
-          <Input
-            className={`${errors.message ? 'input__textbox--error' : ''}`}
-            register={register}
-            name="message"
-            type="text"
-            error={errors.message}
-          />
-          <Button type="submit">{t('contact.sendBtn')}</Button>
-        </form>
+        <div className="contact__form-container">
+          <form className="form contact__form" onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="" className="form__label">
+              {t('contact.emailLabel')}*
+            </label>
+            <Input
+              className={`${errors.email ? 'input__textbox--error' : ''}`}
+              register={register}
+              name="email"
+              type="text"
+              error={errors.email}
+            />
+            <label htmlFor="" className="form__label">
+              {t('contact.msgLabel')}*
+            </label>
+            <Input
+              className={`input__textarea ${errors.message ? 'input__textarea--error' : ''}`}
+              register={register}
+              name="message"
+              type="text"
+              error={errors.message}
+              errorClassName="input__custom-error"
+              isTextArea={true}
+            />
+            <Button type="submit">{t('contact.sendBtn')}</Button>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -8,16 +8,31 @@ const Input = ({
   handleFocus,
   placeholder = '',
   className,
+  errorClassName,
+  isTextArea,
 }) => (
   <div className="input__container">
-    <input
-      className={`input__textbox ${className}`}
-      type={type}
-      {...register(name)}
-      placeholder={placeholder}
-      onFocus={handleFocus}
-    />
-    <small className="input__error">{error?.message}</small>
+    {isTextArea ? (
+      <textarea
+        className={`input__textbox ${className ? className : ''}`}
+        type={type}
+        {...register(name)}
+        placeholder={placeholder}
+        onFocus={handleFocus}
+      ></textarea>
+    ) : (
+      <input
+        className={`input__textbox ${className ? className : ''}`}
+        type={type}
+        {...register(name)}
+        placeholder={placeholder}
+        onFocus={handleFocus}
+      />
+    )}
+
+    <small className={`input__error ${errorClassName ? errorClassName : ''}`}>
+      {error?.message}
+    </small>
   </div>
 );
 

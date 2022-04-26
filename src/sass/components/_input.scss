@@ -19,22 +19,40 @@
     padding: 1rem;
     outline: none;
     font-size: 1rem;
-    text-transform: uppercase;
     font-weight: 500;
     background-color: $white;
     @include default-font-style;
   }
 
-  &__textbox--error {
-    &:focus,
-    &:active {
-      border: 1.5px solid $error2;
-    }
+  &__textbox--error,
+  &__textbox--error:focus,
+  &__textbox--error:active,
+  &__textarea--error,
+  &__textarea--error:focus,
+  &__textarea--error:active {
+    border: 1.5px solid $error2;
+  }
+
+  &__textarea,
+  &__textarea:focus,
+  &__textarea:active {
+    margin-bottom: 4.4rem;
+    height: 15rem;
+    resize: none;
   }
 
   &__error {
     position: absolute;
     top: 4rem;
+    color: $error;
+    text-transform: none;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  &__custom-error {
+    position: absolute;
+    top: 15.5rem;
     color: $error;
     text-transform: none;
     letter-spacing: 1px;

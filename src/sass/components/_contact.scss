@@ -20,6 +20,7 @@
     width: 60%;
     min-width: 80rem;
     padding-bottom: 2.2rem;
+    box-shadow: $shadow;
   }
 
   &__close {
@@ -42,5 +43,9 @@
     text-transform: none;
     font-size: 1.8rem;
     margin: 1.1rem auto 2.3rem;
+  }
+
+  &__form-container {
+    width: 43rem;
   }
 }
