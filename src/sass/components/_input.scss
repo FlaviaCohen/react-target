@@ -25,11 +25,19 @@
     @include default-font-style;
   }
 
+  &__textbox--error {
+    &:focus,
+    &:active {
+      border: 1.5px solid $error2;
+    }
+  }
+
   &__error {
     position: absolute;
     top: 4rem;
     color: $error;
     text-transform: none;
     letter-spacing: 1px;
+    text-align: center;
   }
 }

@@ -1,11 +1,29 @@
+import { useForm } from 'react-hook-form';
+import useTranslation from 'hooks/useTranslation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import Input from 'components/form/Input/Input';
 import Button from 'components/common/Button/Button';
-import useTranslation from 'hooks/useTranslation';
 import close from 'assets/close.svg';
 import smiles from 'assets/smiles.svg';
 
 const Contact = ({ isContactOpen, handleContact }) => {
   const t = useTranslation();
+
+  const schema = z.object({
+    email: z.string().email({ message: t('contact.errors.emailMsg') }),
+    message: z.string().min(1, { message: t('contact.errors.required') }),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
+
+  const onSubmit = data => {
+    console.log(data);
+  };
 
   return (
     <div className={`contact ${isContactOpen ? '' : 'hidden'}`}>
@@ -21,16 +39,28 @@ const Contact = ({ isContactOpen, handleContact }) => {
         </div>
         <img src={smiles} alt="smiles" className="contact__smiles" />
         <h1 className="contact__title">{t('contact.title')}</h1>
-        <form action="" className="form contact__form">
+        <form className="form contact__form" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="" className="form__label">
             {t('contact.emailLabel')}*
           </label>
-          {/*    <Input name="email" type="text" /> */}
+          <Input
+            className={`${errors.email ? 'input__textbox--error' : ''}`}
+            register={register}
+            name="email"
+            type="text"
+            error={errors.email}
+          />
           <label htmlFor="" className="form__label">
             {t('contact.msgLabel')}*
           </label>
-          {/*           <Input name="message" type="text" /> */}
-          <Button>{t('contact.sendBtn')}</Button>
+          <Input
+            className={`${errors.message ? 'input__textbox--error' : ''}`}
+            register={register}
+            name="message"
+            type="text"
+            error={errors.message}
+          />
+          <Button type="submit">{t('contact.sendBtn')}</Button>
         </form>
       </div>
     </div>

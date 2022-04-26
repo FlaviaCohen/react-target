@@ -1,9 +1,17 @@
 import { string, func, object } from 'prop-types';
 
-const Input = ({ register, type = 'text', name, error, handleFocus, placeholder = '' }) => (
+const Input = ({
+  register,
+  type = 'text',
+  name,
+  error,
+  handleFocus,
+  placeholder = '',
+  className,
+}) => (
   <div className="input__container">
     <input
-      className="input__textbox"
+      className={`input__textbox ${className}`}
       type={type}
       {...register(name)}
       placeholder={placeholder}
