@@ -29,7 +29,8 @@
       "emailMsg": "Must provide an email",
       "passwordMsg": "Password must have at least 8 characters, a letter and a number",
       "passwordConfirmationMsg": "Passwords must match"
-    }
+    },
+    "emailPlaceholder": "min. 6 characters long"
   },
   "login": {
     "title": "Sign in",

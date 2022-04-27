@@ -98,7 +98,7 @@ const Signup = () => {
                 name="password"
                 error={errors.password}
                 handleFocus={handleFocus}
-                placeholder="min. 6 characters long"
+                placeholder={t('signup.emailPlaceholder')}
               />
 
               <label className="form__label" htmlFor="password">
