@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'hooks/useTranslation';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,13 +12,17 @@ import smiles from 'assets/smiles.svg';
 import sad from 'assets/sad.svg';
 
 const Contact = ({ isContactOpen, handleContact }) => {
+  const [feedback, setFeedback] = useState({ success: false, loading: false, error: false });
+  const [path, setPath] = useState('/');
+
   const t = useTranslation();
+  const location = useLocation();
+
   const [contact, { isLoading, isSuccess, error }] = useContactMutation();
   const schema = z.object({
     email: z.string().email({ message: t('contact.errors.emailMsg') }),
     body: z.string().min(1, { message: t('contact.errors.required') }),
   });
-  const [feedback, setFeedback] = useState({ success: false, loading: false, error: false });
 
   const {
     register,
@@ -41,13 +46,29 @@ const Contact = ({ isContactOpen, handleContact }) => {
     }
   };
 
+  const checkLocation = () => {
+    setPath(location.pathname);
+  };
+
+  useEffect(() => {
+    checkLocation();
+  }, []);
+
   useEffect(() => {
     handleFeedback();
   }, [isLoading, isSuccess, error]);
 
   return (
-    <div className={`contact ${isContactOpen ? '' : 'hidden'}`}>
-      <div className="contact__content">
+    <div
+      className={`contact__container contact__container${
+        path === '/login' || path === '/signup' ? '--full' : '--partial'
+      } ${isContactOpen ? '' : 'hidden'}`}
+    >
+      <div
+        className={`contact__content contact__content${
+          path === '/login' || path === '/signup' ? '--full' : '--partial'
+        }`}
+      >
         <div
           className="contact__close"
           onClick={handleContact}
@@ -61,7 +82,11 @@ const Contact = ({ isContactOpen, handleContact }) => {
         {!feedback.success && !feedback.error && (
           <>
             <h1 className="contact__title mb-2">{t('contact.title')}</h1>
-            <div className="contact__form-container">
+            <div
+              className={`contact__form-container${
+                path === '/login' || path === '/signup' ? '--full' : '--partial'
+              }`}
+            >
               <form className="form contact__form" onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="" className="form__label">
                   {t('contact.emailLabel')}*
@@ -87,9 +112,11 @@ const Contact = ({ isContactOpen, handleContact }) => {
                   isTextArea={true}
                   disabled={isLoading}
                 />
-                <Button type="submit">
-                  {isLoading ? t('contact.sendingBtn') : t('contact.sendBtn')}
-                </Button>
+                <div className="contact__btn-container">
+                  <Button type="submit">
+                    {isLoading ? t('contact.sendingBtn') : t('contact.sendBtn')}
+                  </Button>
+                </div>
               </form>
             </div>
           </>
