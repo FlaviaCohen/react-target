@@ -36,13 +36,13 @@ const Contact = ({ isContactOpen, handleContact }) => {
 
   const handleFeedback = () => {
     if (isLoading) {
-      setFeedback({ ...feedback, loading: true });
+      setFeedback(prev => ({ ...prev, loading: true }));
     }
     if (isSuccess) {
-      setFeedback({ ...feedback, loading: false, success: true });
+      setFeedback(prev => ({ ...prev, loading: false, success: true }));
     }
     if (error) {
-      setFeedback({ ...feedback, loading: false, error: true });
+      setFeedback(prev => ({ ...prev, loading: false, error: true }));
     }
   };
 
