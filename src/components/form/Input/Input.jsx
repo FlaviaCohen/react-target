@@ -1,15 +1,41 @@
 import { string, func, object } from 'prop-types';
 
-const Input = ({ register, type = 'text', name, error, handleFocus, placeholder = '' }) => (
+const Input = ({
+  register,
+  type = 'text',
+  name,
+  error,
+  handleFocus,
+  placeholder = '',
+  className,
+  errorClassName,
+  isTextArea,
+  disabled,
+}) => (
   <div className="input__container">
-    <input
-      className="input__textbox"
-      type={type}
-      {...register(name)}
-      placeholder={placeholder}
-      onFocus={handleFocus}
-    />
-    <small className="input__error">{error?.message}</small>
+    {isTextArea ? (
+      <textarea
+        className={`input__textarea ${className ? className : ''}`}
+        type={type}
+        {...register(name)}
+        placeholder={placeholder}
+        onFocus={handleFocus}
+        disabled={disabled}
+      ></textarea>
+    ) : (
+      <input
+        className={`input__textbox ${className ? className : ''}`}
+        type={type}
+        {...register(name)}
+        placeholder={placeholder}
+        onFocus={handleFocus}
+        disabled={disabled}
+      />
+    )}
+
+    <small className={`input__error ${errorClassName ? errorClassName : ''}`}>
+      {error?.message}
+    </small>
   </div>
 );
 

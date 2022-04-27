@@ -5,6 +5,7 @@
 // BASE
 @import './base/base';
 @import './base/typography';
+@import './base/utils';
 
 // LAYOUT
 @import './layout/header';
@@ -16,6 +17,7 @@
 @import './components/form';
 @import './components/logoutButton';
 @import './components/map';
+@import './components/contact';
 
 // PAGES
 @import './pages/app';

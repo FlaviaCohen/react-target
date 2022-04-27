@@ -63,65 +63,67 @@ const Signup = () => {
     <>
       <div className="signUp">
         <div className="signUp__left">
-          <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-            <h1 className="signUp__title">{t('signup.title')}</h1>
+          <div className="signUp__form-container">
+            <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+              <h1 className="signUp__title">{t('signup.title')}</h1>
 
-            <label className="form__label" htmlFor="name">
-              {t('signup.labels.name')}
-            </label>
-            <Input
-              register={register}
-              type="name"
-              name="name"
-              error={errors.name}
-              handleFocus={handleFocus}
-            />
+              <label className="form__label" htmlFor="name">
+                {t('signup.labels.name')}
+              </label>
+              <Input
+                register={register}
+                type="name"
+                name="name"
+                error={errors.name}
+                handleFocus={handleFocus}
+              />
 
-            <label className="form__label" htmlFor="email">
-              {t('signup.labels.email')}
-            </label>
-            <Input
-              register={register}
-              type="email"
-              name="email"
-              error={errors.email}
-              handleFocus={handleFocus}
-            />
+              <label className="form__label" htmlFor="email">
+                {t('signup.labels.email')}
+              </label>
+              <Input
+                register={register}
+                type="email"
+                name="email"
+                error={errors.email}
+                handleFocus={handleFocus}
+              />
 
-            <label className="form__label" htmlFor="password">
-              {t('signup.labels.password')}
-            </label>
-            <Input
-              register={register}
-              type="password"
-              name="password"
-              error={errors.password}
-              handleFocus={handleFocus}
-              placeholder="min. 6 characters long"
-            />
+              <label className="form__label" htmlFor="password">
+                {t('signup.labels.password')}
+              </label>
+              <Input
+                register={register}
+                type="password"
+                name="password"
+                error={errors.password}
+                handleFocus={handleFocus}
+                placeholder={t('signup.emailPlaceholder')}
+              />
 
-            <label className="form__label" htmlFor="password">
-              {t('signup.labels.passwordConfirmation')}
-            </label>
-            <Input
-              register={register}
-              type="password"
-              name="passwordConfirmation"
-              error={errors.passwordConfirmation}
-              handleFocus={handleFocus}
-            />
+              <label className="form__label" htmlFor="password">
+                {t('signup.labels.passwordConfirmation')}
+              </label>
+              <Input
+                register={register}
+                type="password"
+                name="passwordConfirmation"
+                error={errors.passwordConfirmation}
+                handleFocus={handleFocus}
+              />
 
-            {error && error.data && (
-              <p className="error-message">{error.data.errors?.full_messages[0]}</p>
-            )}
+              {error && error.data && (
+                <p className="error-message">{error.data.errors?.full_messages[0]}</p>
+              )}
 
-            <Button type="submit" disabled={isLoading}>
-              {t('signup.title')}
-            </Button>
-            <Link to={routesPaths.login} className="form__link">
-              {t('signup.alreadyHaveAccount')}
-            </Link>
-          </form>
+              <Button type="submit" disabled={isLoading}>
+                {t('signup.title')}
+              </Button>
+              <Link to={routesPaths.login} className="form__link">
+                {t('signup.alreadyHaveAccount')}
+              </Link>
+            </form>
+          </div>
         </div>
       </div>
       <PhoneAppSection />
