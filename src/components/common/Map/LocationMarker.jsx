@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import routesPaths from 'routes/routesPaths';
 import { Marker, Popup, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import marker from 'assets/marker.svg';
@@ -22,6 +24,7 @@ const LocationMarker = () => {
   const [position, setPosition] = useState(null);
   const [newTarget, setNewTarget] = useState(null);
   const map = useMap();
+  const history = useHistory();
 
   const findLocation = () => {
     map.locate().on('locationfound', function (e) {
@@ -34,6 +37,7 @@ const LocationMarker = () => {
     map.on('click', ev => {
       let latlng = map.mouseEventToLatLng(ev.originalEvent);
       setNewTarget({ lat: latlng.lat, lng: latlng.lng });
+      history.push(routesPaths.newTarget);
     });
   };
 
