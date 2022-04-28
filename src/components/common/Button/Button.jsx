@@ -1,7 +1,7 @@
 import { func, bool, string } from 'prop-types';
 
-const Button = ({ children, type = 'button', disabled, handleClick }) => (
-  <button className="button" onClick={handleClick} type={type} disabled={disabled}>
+const Button = ({ children, type = 'button', disabled, handleClick, className = '' }) => (
+  <button className={`button ${className}`} onClick={handleClick} type={type} disabled={disabled}>
     {children}
   </button>
 );

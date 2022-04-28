@@ -9,23 +9,28 @@ const NewTarget = () => {
       <img src={target} alt="target" className="new__target-icon" />
       <p className="new__title">Create new target</p>
 
-      <form className="form">
-        <label htmlFor="area" className="form__label">
+      <form className="new__form">
+        <label htmlFor="area" className="form__label new__label">
           Specify area length
         </label>
-        <Input name="area"></Input>
-        <label htmlFor="title" className="form__label">
+        {/* <Input name="area"></Input> */}
+        <label htmlFor="title" className="form__label new__label">
           Target title
         </label>
-        <Input name="title"></Input>
-        <label htmlFor="topic" className="form__label">
+        {/*  <Input name="title"></Input> */}
+        <label htmlFor="topic" className="form__label new__label">
           Select a topic
         </label>
         <select name="topic" className="new__select">
-          <optiion className="new__option"></optiion>
+          <option className="new__option"></option>
         </select>
-        <Button>Save target</Button>
+        <div className="new__btn-container--fullwidth">
+          <div className="new__btn-container">
+            <Button>Save target</Button>
+          </div>
+        </div>
       </form>
+
       <img src={smiles} alt="smiles" className="new__smiles" />
     </div>
   );
