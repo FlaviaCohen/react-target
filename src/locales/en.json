@@ -65,5 +65,13 @@
       "errorTitle": "Opps!",
       "errorSubtitle": "An error has occured while sending your message."
     }
+  },
+  "newTarget": {
+    "title": "Create new target",
+    "labels": {
+      "area": "Specify area length",
+      "title": "Target title",
+      "topic": "Select a topic"
+    }
   }
 }
