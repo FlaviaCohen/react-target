@@ -72,6 +72,7 @@
       "area": "Specify area length",
       "title": "Target title",
       "topic": "Select a topic"
-    }
+    },
+    "errors": "This field is mandatory"
   }
 }
