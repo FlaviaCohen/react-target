@@ -57,11 +57,11 @@ const NewTarget = () => {
         <label htmlFor="area" className="form__label new__label">
           {t('newTarget.labels.area')}
         </label>
-        <Input register={register} error={errors.area} name="area" />
+        <Input register={register} error={errors.area} name="area" className="new__input" />
         <label htmlFor="title" className="form__label new__label">
           {t('newTarget.labels.title')}
         </label>
-        <Input register={register} error={errors.title} name="title" />
+        <Input register={register} error={errors.title} name="title" className="new__input" />
         <label htmlFor="topic" className="form__label new__label">
           {t('newTarget.labels.topic')}
         </label>

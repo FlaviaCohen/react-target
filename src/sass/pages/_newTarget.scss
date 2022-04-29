@@ -20,6 +20,12 @@
     align-items: flex-start;
   }
 
+  &__input,
+  &__input:focus,
+  &__input:active {
+    margin-bottom: 1rem;
+  }
+
   &__btn-container {
     width: 60%;
     &--fullwidth {
@@ -28,6 +34,10 @@
       justify-content: center;
       margin: 29rem auto 2rem;
     }
+  }
+
+  &__select {
+    width: 100%;
   }
 
   &__smiles {

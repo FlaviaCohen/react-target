@@ -17,13 +17,13 @@ const Select = ({ register, error, handleFocus, options }) => {
         role="button"
         tabIndex={0}
       >
-        <Input register={register} name="topic" />
+        <Input register={register} name="topic" className="new__input" />
       </div>
       <div className={`select__dropdown ${isOpen ? '' : 'hidden'}`}>
         {options.length &&
           options.map(option => (
             <div className="select__option" key={option.text}>
-              <img src={option.icon} alt="" className="select__icon" />
+              <img src={option.icon} alt={option.text} className="select__icon" />
               <p className="select__text">{option.text}</p>
             </div>
           ))}
