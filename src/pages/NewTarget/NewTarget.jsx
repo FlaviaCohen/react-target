@@ -61,12 +61,18 @@ const NewTarget = () => {
         <label htmlFor="title" className="form__label new__label">
           {t('newTarget.labels.title')}
         </label>
-        <Input register={register} error={errors.title} name="title" className="new__input" />
+        <Input
+          register={register}
+          error={errors.title}
+          name="title"
+          className="new__input"
+          placeholder={t('newTarget.placeholder.title')}
+        />
         <label htmlFor="topic" className="form__label new__label">
           {t('newTarget.labels.topic')}
         </label>
         <div className="new__select">
-          <Select register={register} options={topics} />
+          <Select register={register} options={topics} error={errors.topic} />
         </div>
         <div className="new__btn-container--fullwidth">
           <div className="new__btn-container">

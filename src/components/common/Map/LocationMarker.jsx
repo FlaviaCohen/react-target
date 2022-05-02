@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import routesPaths from 'routes/routesPaths';
 import { Marker, Popup, useMap } from 'react-leaflet';
@@ -26,25 +26,28 @@ const LocationMarker = () => {
   const map = useMap();
   const history = useHistory();
 
-  const findLocation = () => {
+  const findLocation = useCallback(() => {
     map.locate().on('locationfound', function (e) {
       setPosition(e.latlng);
       map.flyTo(e.latlng, map.getZoom());
     });
-  };
+  }, [map]);
 
-  const handleClick = e => {
-    map.on('click', ev => {
-      let latlng = map.mouseEventToLatLng(ev.originalEvent);
-      setNewTarget({ lat: latlng.lat, lng: latlng.lng });
-      history.push(routesPaths.newTarget);
-    });
-  };
+  const handleClick = useCallback(
+    e => {
+      map.on('click', ev => {
+        let latlng = map.mouseEventToLatLng(ev.originalEvent);
+        setNewTarget({ lat: latlng.lat, lng: latlng.lng });
+        history.push(routesPaths.newTarget);
+      });
+    },
+    [map, history]
+  );
 
   useEffect(() => {
     findLocation();
     handleClick();
-  }, [map]);
+  }, [findLocation, handleClick]);
 
   return (
     <>

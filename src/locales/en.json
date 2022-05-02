@@ -73,6 +73,10 @@
       "title": "Target title",
       "topic": "Select a topic"
     },
+    "placeholder": {
+      "title": "Choose a title for your target",
+      "topic": "What do you want to talk about?"
+    },
     "errors": "This field is mandatory"
   }
 }

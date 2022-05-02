@@ -23,7 +23,8 @@
   &__input,
   &__input:focus,
   &__input:active {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    text-transform: none;
   }
 
   &__btn-container {

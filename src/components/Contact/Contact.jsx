@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useTranslation from 'hooks/useTranslation';
@@ -34,7 +34,7 @@ const Contact = ({ isContactOpen, handleContact }) => {
     contact(data);
   };
 
-  const handleFeedback = () => {
+  const handleFeedback = useCallback(() => {
     if (isLoading) {
       setFeedback(prev => ({ ...prev, loading: true }));
     }
@@ -44,19 +44,19 @@ const Contact = ({ isContactOpen, handleContact }) => {
     if (error) {
       setFeedback(prev => ({ ...prev, loading: false, error: true }));
     }
-  };
+  }, [isLoading, isSuccess, error]);
 
-  const checkLocation = () => {
+  const checkLocation = useCallback(() => {
     setPath(location.pathname);
-  };
+  }, [location]);
 
   useEffect(() => {
     checkLocation();
-  }, []);
+  }, [checkLocation]);
 
   useEffect(() => {
     handleFeedback();
-  }, [isLoading, isSuccess, error]);
+  }, [handleFeedback]);
 
   return (
     <div
