@@ -72,7 +72,12 @@ const NewTarget = () => {
           {t('newTarget.labels.topic')}
         </label>
         <div className="new__select">
-          <Select register={register} options={topics} error={errors.topic} />
+          <Select
+            register={register}
+            options={topics}
+            errors={errors}
+            placeholder={t('newTarget.placeholder.topic')}
+          />
         </div>
         <div className="new__btn-container--fullwidth">
           <div className="new__btn-container">
