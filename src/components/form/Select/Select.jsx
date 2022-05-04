@@ -27,16 +27,16 @@ const Select = ({ register, errors, options, placeholder }) => {
         />
       </div>
       <div className={`select__dropdown ${isOpen ? '' : 'hidden'}`}>
-        {options.length &&
-          options.map((option, key) => (
+        {options?.length &&
+          options.map(option => (
             <div
               className="select__option"
-              key={key}
-              onClick={() => handleOption(option.text)}
+              key={option.topic.id}
+              onClick={() => handleOption(option.topic.label)}
               role="presentation"
             >
-              <img src={option.icon} alt={option.text} className="select__icon" />
-              <p className="select__text">{option.text}</p>
+              <img src={option.topic.icon} alt={option.topic.label} className="select__icon" />
+              <p className="select__text">{option.topic.label}</p>
             </div>
           ))}
       </div>

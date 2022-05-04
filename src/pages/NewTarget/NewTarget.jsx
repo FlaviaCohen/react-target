@@ -1,42 +1,25 @@
+//import { useState, useEffect } from 'react';
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useTopicsQuery } from 'services/target/topics';
 import Input from 'components/form/Input/Input';
 import Select from 'components/form/Select/Select';
 import Button from 'components/common/Button/Button';
 import target from 'assets/target.svg';
-import football from 'assets/football.svg';
-import travel from 'assets/travel.svg';
-import politics from 'assets/politics.svg';
-import art from 'assets/art.svg';
-import dating from 'assets/dating.svg';
-import music from 'assets/music.svg';
-import movies from 'assets/movies.svg';
-import series from 'assets/series.svg';
-import food from 'assets/food.svg';
 import smiles from 'assets/smiles.svg';
 
 const NewTarget = () => {
-  const topics = [
-    { text: 'Football', icon: football },
-    { text: 'Travel', icon: travel },
-    { text: 'Politics', icon: politics },
-    { text: 'Art', icon: art },
-    { text: 'Dating', icon: dating },
-    { text: 'Music', icon: music },
-    { text: 'Movies', icon: movies },
-    { text: 'Series', icon: series },
-    { text: 'Food', icon: food },
-  ];
-
   const t = useTranslation();
 
   const schema = z.object({
-    area: z.string({ message: t('newTarget.errors') }),
-    title: z.string({ message: t('newTarget.errors') }),
-    topic: z.string({ message: t('newTarget.errors') }),
+    area: z.string().min(1, { message: t('newTarget.errors') }),
+    title: z.string().min(1, { message: t('newTarget.errors') }),
+    topic: z.string().min(1, { message: t('newTarget.errors') }),
   });
+
+  const { data: topics = [] } = useTopicsQuery();
 
   const onSubmit = data => {
     console.log(data);
@@ -74,7 +57,7 @@ const NewTarget = () => {
         <div className="new__select">
           <Select
             register={register}
-            options={topics}
+            options={topics.topics}
             errors={errors}
             placeholder={t('newTarget.placeholder.topic')}
           />
