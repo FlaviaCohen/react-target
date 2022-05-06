@@ -2,6 +2,7 @@
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
+import { useNewTargetMutation } from 'services/target/newTarget';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTopicsQuery } from 'services/target/topics';
@@ -23,15 +24,17 @@ const NewTarget = () => {
   });
 
   const { data: topics = [] } = useTopicsQuery();
+  const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
 
   const onSubmit = data => {
-    const newTarget = {
+    const target = {
       radius: parseInt(data.target[0].value),
       title: data.target[1].value,
       lat: state.coordinates.lat,
       lng: state.coordinates.lng,
       topic_id: state.topic,
     };
+    newTarget(target);
   };
 
   const {
@@ -45,14 +48,7 @@ const NewTarget = () => {
       <img src={target} alt="target" className="new__target-icon" />
       <p className="new__title">{t('newTarget.title')}</p>
 
-      <form
-        className="new__form"
-        onSubmit={e => {
-          e.preventDefault();
-          console.log(e);
-          handleSubmit(onSubmit);
-        }}
-      >
+      <form className="new__form" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="area" className="form__label new__label">
           {t('newTarget.labels.area')}
         </label>

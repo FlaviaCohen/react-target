@@ -1,11 +1,11 @@
 import endpoints from 'constants/endpoints';
 import { api } from 'services/api';
 
-const contactApi = api.injectEndpoints({
+const newTargetApi = api.injectEndpoints({
   endpoints: builder => ({
-    contact: builder.mutation({
+    newTarget: builder.mutation({
       query: body => ({
-        url: endpoints.CONTACT,
+        url: endpoints.NEW_TARGET,
         method: 'POST',
         body,
       }),
@@ -14,8 +14,8 @@ const contactApi = api.injectEndpoints({
 });
 
 export const {
-  useContactMutation,
+  useNewTargetMutation,
   endpoints: {
-    contact: { matchFulfilled: contactFulfilled },
+    newTarget: { matchFulfilled: newTargetFulfilled },
   },
-} = contactApi;
+} = newTargetApi;
