@@ -69,7 +69,7 @@
   "newTarget": {
     "title": "Create new target",
     "labels": {
-      "area": "Specify area length",
+      "area": "Specify area length (km)",
       "title": "Target title",
       "topic": "Select a topic"
     },

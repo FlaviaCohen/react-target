@@ -45,7 +45,7 @@ const LocationMarker = () => {
         history.push(routesPaths.newTarget);
       });
     },
-    [map, history]
+    [map, history, dispatch]
   );
 
   useEffect(() => {

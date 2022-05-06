@@ -1,6 +1,7 @@
 //import { useState, useEffect } from 'react';
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
+import { useStore } from 'context/Store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTopicsQuery } from 'services/target/topics';
@@ -11,6 +12,8 @@ import target from 'assets/target.svg';
 import smiles from 'assets/smiles.svg';
 
 const NewTarget = () => {
+  const [state] = useStore();
+
   const t = useTranslation();
 
   const schema = z.object({
@@ -23,13 +26,12 @@ const NewTarget = () => {
 
   const onSubmit = data => {
     const newTarget = {
-      title: data.title,
-      lat: -94.5566,
-      lng: -94.5566,
-      radius: parseInt(data.area),
-      topic_id: 2,
+      radius: parseInt(data.target[0].value),
+      title: data.target[1].value,
+      lat: state.coordinates.lat,
+      lng: state.coordinates.lng,
+      topic_id: state.topic,
     };
-    console.log(data);
   };
 
   const {
