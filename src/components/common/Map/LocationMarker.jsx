@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useStore } from 'context/Store';
 import routesPaths from 'routes/routesPaths';
 import { Marker, Popup, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
@@ -23,6 +24,8 @@ const targetIcon = new Icon({
 const LocationMarker = () => {
   const [position, setPosition] = useState(null);
   const [newTarget, setNewTarget] = useState(null);
+
+  const [, dispatch] = useStore();
   const map = useMap();
   const history = useHistory();
 
@@ -38,6 +41,7 @@ const LocationMarker = () => {
       map.on('click', ev => {
         let latlng = map.mouseEventToLatLng(ev.originalEvent);
         setNewTarget({ lat: latlng.lat, lng: latlng.lng });
+        dispatch({ type: 'SET_COORDINATES', payload: { lat: latlng.lat, lng: latlng.lng } });
         history.push(routesPaths.newTarget);
       });
     },

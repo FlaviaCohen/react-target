@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { StoreProvider } from 'context/Store';
+import { initialState, reducer } from 'store/reducer';
 import { IntlProvider } from 'react-intl';
 import flatten from 'flat';
 import { HelmetProvider } from 'react-helmet-async';
@@ -21,7 +23,9 @@ ReactDOM.render(
     <IntlProvider messages={flatten(messages)} locale={locale} defaultLocale={DEFAULT_LANGUAGE}>
       <Provider store={store}>
         <HelmetProvider>
-          <App />
+          <StoreProvider initialState={initialState} reducer={reducer}>
+            <App />
+          </StoreProvider>
         </HelmetProvider>
       </Provider>
     </IntlProvider>

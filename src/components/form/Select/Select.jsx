@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Input from 'components/form/Input/Input';
 
-const Select = ({ register, errors, options, placeholder }) => {
+const Select = ({ register, errors, options, placeholder, type }) => {
   const [isOpen, setisOpen] = useState(false);
   const [selected, setSelected] = useState('');
 
@@ -24,6 +24,7 @@ const Select = ({ register, errors, options, placeholder }) => {
           value={selected}
           error={errors.topic}
           placeholder={placeholder}
+          type={type}
         />
       </div>
       <div className={`select__dropdown ${isOpen ? '' : 'hidden'}`}>

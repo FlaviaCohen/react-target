@@ -22,6 +22,13 @@ const NewTarget = () => {
   const { data: topics = [] } = useTopicsQuery();
 
   const onSubmit = data => {
+    const newTarget = {
+      title: data.title,
+      lat: -94.5566,
+      lng: -94.5566,
+      radius: parseInt(data.area),
+      topic_id: 2,
+    };
     console.log(data);
   };
 
@@ -36,11 +43,24 @@ const NewTarget = () => {
       <img src={target} alt="target" className="new__target-icon" />
       <p className="new__title">{t('newTarget.title')}</p>
 
-      <form className="new__form" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="new__form"
+        onSubmit={e => {
+          e.preventDefault();
+          console.log(e);
+          handleSubmit(onSubmit);
+        }}
+      >
         <label htmlFor="area" className="form__label new__label">
           {t('newTarget.labels.area')}
         </label>
-        <Input register={register} error={errors.area} name="area" className="new__input" />
+        <Input
+          register={register}
+          error={errors.area}
+          name="area"
+          className="new__input"
+          type="number"
+        />
         <label htmlFor="title" className="form__label new__label">
           {t('newTarget.labels.title')}
         </label>
