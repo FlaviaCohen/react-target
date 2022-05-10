@@ -77,6 +77,8 @@
       "title": "Choose a title for your target",
       "topic": "What do you want to talk about?"
     },
-    "errors": "This field is mandatory"
+    "errors": "This field is mandatory",
+    "btnSaving": "Saving...",
+    "btn": "Save"
   }
 }

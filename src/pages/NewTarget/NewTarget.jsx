@@ -1,4 +1,4 @@
-//import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
@@ -13,6 +13,8 @@ import target from 'assets/target.svg';
 import smiles from 'assets/smiles.svg';
 
 const NewTarget = () => {
+  const [feedback, setFeedback] = useState({ success: false, loading: false, error: false });
+
   const [state] = useStore();
 
   const t = useTranslation();
@@ -37,11 +39,27 @@ const NewTarget = () => {
     newTarget(target);
   };
 
+  const handleFeedback = useCallback(() => {
+    if (isLoading) {
+      setFeedback(prev => ({ ...prev, loading: true }));
+    }
+    if (isSuccess) {
+      setFeedback(prev => ({ ...prev, loading: false, success: true }));
+    }
+    if (error) {
+      setFeedback(prev => ({ ...prev, loading: false, error: true }));
+    }
+  }, [isLoading, isSuccess, error]);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
+
+  useEffect(() => {
+    handleFeedback();
+  }, [handleFeedback]);
 
   return (
     <div className="new">
@@ -82,7 +100,9 @@ const NewTarget = () => {
         </div>
         <div className="new__btn-container--fullwidth">
           <div className="new__btn-container">
-            <Button type="submit">Save target</Button>
+            <Button type="submit">
+              {feedback.loading ? t('newTarget.btnSaving') : t('newTarget.btn')}
+            </Button>
           </div>
         </div>
       </form>
