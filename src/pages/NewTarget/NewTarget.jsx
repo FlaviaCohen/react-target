@@ -19,25 +19,33 @@ const NewTarget = () => {
 
   const t = useTranslation();
 
+  const { data: topics = [] } = useTopicsQuery();
+  const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
+
   const schema = z.object({
     area: z.string().min(1, { message: t('newTarget.errors') }),
     title: z.string().min(1, { message: t('newTarget.errors') }),
     topic: z.string().min(1, { message: t('newTarget.errors') }),
   });
 
-  const { data: topics = [] } = useTopicsQuery();
-  const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
-
   const onSubmit = data => {
+    console.log({ data });
     const target = {
-      radius: parseInt(data.target[0].value),
-      title: data.target[1].value,
+      radius: parseInt(data.area),
+      title: data.title,
       lat: state.coordinates.lat,
       lng: state.coordinates.lng,
       topic_id: state.topic,
     };
     newTarget(target);
   };
+
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
 
   const handleFeedback = useCallback(() => {
     if (isLoading) {
@@ -50,12 +58,6 @@ const NewTarget = () => {
       setFeedback(prev => ({ ...prev, loading: false, error: true }));
     }
   }, [isLoading, isSuccess, error]);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: zodResolver(schema) });
 
   useEffect(() => {
     handleFeedback();
@@ -96,6 +98,7 @@ const NewTarget = () => {
             options={topics.topics}
             errors={errors}
             placeholder={t('newTarget.placeholder.topic')}
+            setValue={setValue}
           />
         </div>
         <div className="new__btn-container--fullwidth">

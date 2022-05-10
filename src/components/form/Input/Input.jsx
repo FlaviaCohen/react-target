@@ -11,7 +11,6 @@ const Input = ({
   errorClassName,
   isTextArea,
   disabled,
-  value,
 }) => (
   <div className="input__container">
     {isTextArea ? (
@@ -31,7 +30,6 @@ const Input = ({
         placeholder={placeholder}
         onFocus={handleFocus}
         disabled={disabled}
-        value={value}
       />
     )}
 

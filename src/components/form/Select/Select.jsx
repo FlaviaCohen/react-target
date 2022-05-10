@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useStore } from 'context/Store';
 import Input from 'components/form/Input/Input';
 
-const Select = ({ register, errors, options, placeholder, type }) => {
+const Select = ({ register, errors, options, placeholder, type, setValue }) => {
   const [isOpen, setisOpen] = useState(false);
   const [selected, setSelected] = useState('');
 
@@ -14,7 +14,7 @@ const Select = ({ register, errors, options, placeholder, type }) => {
 
   const handleOption = (topic, id) => {
     dispatch({ type: 'SET_TOPIC', payload: id });
-    setSelected(topic);
+    setValue('topic', topic);
     handleDropdown();
   };
 
@@ -25,10 +25,10 @@ const Select = ({ register, errors, options, placeholder, type }) => {
           register={register}
           className="new__input"
           name="topic"
-          value={selected}
           error={errors.topic}
           placeholder={placeholder}
           type={type}
+          disabled={true}
         />
       </div>
       <div className={`select__dropdown ${isOpen ? '' : 'hidden'}`}>
