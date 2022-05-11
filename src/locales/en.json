@@ -4,7 +4,8 @@
   },
   "header": {
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "newTarget": "Create target"
   },
   "home": {
     "welcomeMsg": "Welcome to TARGET",

@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-  background: $white;
   position: relative;
 
   @include respond(phone) {
@@ -32,9 +31,20 @@
     border: none;
     background: none;
     cursor: pointer;
-    
+
     &:hover {
       font-weight: 700;
     }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    color: $white;
+    font-size: 2rem;
+    font-weight: 600;
   }
 }
