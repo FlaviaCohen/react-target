@@ -34,7 +34,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      margin: 29rem auto 2rem;
+      margin: 20rem auto 2rem;
     }
   }
 
@@ -45,5 +45,12 @@
   &__smiles {
     margin: 2.5rem auto;
     width: 4.8rem;
+  }
+
+  &__error {
+    color: $error;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: none;
   }
 }

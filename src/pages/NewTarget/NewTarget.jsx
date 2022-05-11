@@ -29,7 +29,6 @@ const NewTarget = () => {
   });
 
   const onSubmit = data => {
-    console.log({ data });
     const target = {
       radius: parseInt(data.area),
       title: data.title,
@@ -109,7 +108,7 @@ const NewTarget = () => {
           </div>
         </div>
       </form>
-
+      {error && <p className="new__error">{error.data.errors.user[0]}</p>}
       <img src={smiles} alt="smiles" className="new__smiles" />
     </div>
   );
