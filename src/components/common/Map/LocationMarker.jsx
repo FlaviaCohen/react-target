@@ -4,6 +4,8 @@ import { useStore } from 'context/Store';
 import routesPaths from 'routes/routesPaths';
 import { Marker, Popup, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
+import { useTargetsQuery } from 'services/target/getTargets';
+import { useTopicsQuery } from 'services/target/topics';
 import marker from 'assets/marker.svg';
 import newTarget from 'assets/newTarget.svg';
 
@@ -48,10 +50,32 @@ const LocationMarker = () => {
     [map, history, dispatch]
   );
 
+  const { data: topics = [] } = useTopicsQuery();
+  const { data } = useTargetsQuery();
+
+  const handleIcons = id => {
+    const helper = {};
+    for (let i = 0; i < topics.topics?.length; i++) {
+      helper[topics.topics[i].topic.id] = topics.topics[i].topic.icon;
+    }
+    const icon = new Icon({
+      iconUrl: helper[id],
+      iconRetinaUrl: helper[id],
+      popupAnchor: [-0, -0],
+      iconSize: [46, 46],
+    });
+
+    return icon.iconUrl ? icon : targetIcon;
+  };
+
   useEffect(() => {
     findLocation();
     handleClick();
   }, [findLocation, handleClick]);
+  /* 
+  useEffect(() => {
+    handleIcons();
+  }, [topics]); */
 
   return (
     <>
@@ -65,8 +89,28 @@ const LocationMarker = () => {
           <Popup>You are here.</Popup>
         </Marker>
       )}
+      {data &&
+        data.targets &&
+        data.targets.length &&
+        data.targets.map(target => (
+          <Marker
+            key={target.id}
+            position={{ lat: target.target.lat, lng: target.target.lng }}
+            icon={handleIcons()}
+          >
+            <Popup>{target.target.title}</Popup>
+          </Marker>
+        ))}
     </>
   );
 };
 
 export default LocationMarker;
+
+/* target:
+id: 4867
+lat: -39.9522866022469
+lng: -71.0720516398353
+radius: 300
+title: "Milanesa"
+topic_id: 19 */

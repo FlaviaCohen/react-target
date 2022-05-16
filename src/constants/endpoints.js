@@ -4,7 +4,7 @@ const endpoints = {
   SIGN_OUT: '/users/sign_out',
   CONTACT: '/questions',
   TOPICS: '/topics',
-  NEW_TARGET: '/targets',
+  TARGETS: '/targets',
 };
 
 export default endpoints;

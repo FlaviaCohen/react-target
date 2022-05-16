@@ -20,6 +20,7 @@ const NewTarget = () => {
   const t = useTranslation();
 
   const { data: topics = [] } = useTopicsQuery();
+
   const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
 
   const schema = z.object({

@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <header className={`header ${location.pathname == '/new-target' ? 'bg-lb' : 'bg-w'}`}>
-      {location.pathname == '/new-target' ? (
+      {location.pathname === '/new-target' ? (
         <div className="header__actions">
           <img
             src={back}

@@ -1,14 +1,15 @@
 import endpoints from 'constants/endpoints';
-import { api } from 'services/api';
+import { api, tagTypes } from 'services/api';
 
 const newTargetApi = api.injectEndpoints({
   endpoints: builder => ({
     newTarget: builder.mutation({
       query: body => ({
-        url: endpoints.NEW_TARGET,
+        url: endpoints.TARGETS,
         method: 'POST',
         body,
       }),
+      invalidatesTags: tagTypes.TARGETS,
     }),
   }),
 });
