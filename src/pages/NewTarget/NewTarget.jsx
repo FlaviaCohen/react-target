@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
-import { useNewTargetMutation } from 'services/target/newTarget';
+//import { useNewTargetMutation } from 'services/target/newTarget';
+import { useAddTargetMutation } from 'services/target/target';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTopicsQuery } from 'services/target/topics';
@@ -21,7 +22,9 @@ const NewTarget = () => {
 
   const { data: topics = [] } = useTopicsQuery();
 
-  const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
+  //const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
+
+  const [addTarget, { isLoading, isSuccess, error }] = useAddTargetMutation();
 
   const schema = z.object({
     area: z.string().min(1, { message: t('newTarget.errors') }),
@@ -37,7 +40,7 @@ const NewTarget = () => {
       lng: state.coordinates.lng,
       topic_id: state.topic,
     };
-    newTarget(target);
+    addTarget(target);
   };
 
   const {

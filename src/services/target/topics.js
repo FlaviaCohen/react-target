@@ -6,7 +6,6 @@ const topicsApi = api.injectEndpoints({
     topics: builder.query({
       query: () => ({
         url: endpoints.TOPICS,
-        method: 'GET',
       }),
     }),
   }),
