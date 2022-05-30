@@ -4,9 +4,8 @@ import { useStore } from 'context/Store';
 import routesPaths from 'routes/routesPaths';
 import { Marker, Popup, useMap } from 'react-leaflet';
 import { Icon } from 'leaflet';
-//import { useTargetsQuery } from 'services/target/getTargets';
 import { useGetTargetsQuery } from 'services/target/target';
-import { useTopicsQuery } from 'services/target/topics';
+import { useGetTopicsQuery } from 'services/target/topics';
 import marker from 'assets/marker.svg';
 import newTarget from 'assets/newTarget.svg';
 
@@ -27,7 +26,6 @@ const targetIcon = new Icon({
 const LocationMarker = () => {
   const [position, setPosition] = useState(null);
   const [newTarget, setNewTarget] = useState(null);
-  const [topics, setTopics] = useState([]);
 
   const [, dispatch] = useStore();
   const map = useMap();
@@ -52,16 +50,16 @@ const LocationMarker = () => {
     [map, history, dispatch]
   );
 
-  const { data: topicsList, isSuccess: topicsSuccess } = useTopicsQuery();
+  const { data: topicsList, isSuccess: topicsSuccess } = useGetTopicsQuery();
   const { data: targetsList, isSuccess: targetsSuccess } = useGetTargetsQuery();
 
-  // AVERIGUAR COMO ESPERAR A TOPICS QUERY PARA CREAR EL ICON
   const handleIcons = id => {
     const helper = {};
 
     for (let i = 0; i < topicsList.topics.length; i++) {
       helper[topicsList.topics[i].topic.id] = topicsList.topics[i].topic.icon;
     }
+
     const icon = new Icon({
       iconUrl: helper[id],
       iconRetinaUrl: helper[id],
@@ -89,11 +87,12 @@ const LocationMarker = () => {
         </Marker>
       )}
       {targetsSuccess &&
+        topicsSuccess &&
         targetsList.targets.map(target => (
           <Marker
             key={target.id}
             position={{ lat: target.target.lat, lng: target.target.lng }}
-            icon={topicsSuccess && handleIcons()}
+            icon={handleIcons()}
           >
             <Popup>{target.target.title}</Popup>
           </Marker>
@@ -103,11 +102,3 @@ const LocationMarker = () => {
 };
 
 export default LocationMarker;
-
-/* target:
-id: 4867
-lat: -39.9522866022469
-lng: -71.0720516398353
-radius: 300
-title: "Milanesa"
-topic_id: 19 */

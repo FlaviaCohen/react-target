@@ -6,7 +6,7 @@ import { useStore } from 'context/Store';
 import { useAddTargetMutation } from 'services/target/target';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useTopicsQuery } from 'services/target/topics';
+import { useGetTopicsQuery } from 'services/target/topics';
 import Input from 'components/form/Input/Input';
 import Select from 'components/form/Select/Select';
 import Button from 'components/common/Button/Button';
@@ -20,7 +20,7 @@ const NewTarget = () => {
 
   const t = useTranslation();
 
-  const { data: topics = [] } = useTopicsQuery();
+  const { data: topics = [] } = useGetTopicsQuery();
 
   //const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
 

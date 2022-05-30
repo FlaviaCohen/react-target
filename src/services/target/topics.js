@@ -3,7 +3,7 @@ import { api } from 'services/api';
 
 const topicsApi = api.injectEndpoints({
   endpoints: builder => ({
-    topics: builder.query({
+    getTopics: builder.query({
       query: () => ({
         url: endpoints.TOPICS,
       }),
@@ -11,9 +11,4 @@ const topicsApi = api.injectEndpoints({
   }),
 });
 
-export const {
-  useTopicsQuery,
-  endpoints: {
-    topics: { matchFulfilled: topicsFulfilled },
-  },
-} = topicsApi;
+export const { useGetTopicsQuery } = topicsApi;
