@@ -80,6 +80,9 @@
     },
     "errors": "This field is mandatory",
     "btnSaving": "Saving...",
-    "btn": "Save target"
+    "btn": "Save target",
+    "feedback": {
+      "error": "Couldn't create your target"
+    }
   }
 }

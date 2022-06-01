@@ -50,7 +50,7 @@ const LocationMarker = () => {
     [map, history, dispatch]
   );
 
-  const { data: topicsList, isSuccess: topicsSuccess } = useGetTopicsQuery();
+  const { isSuccess: topicsSuccess } = useGetTopicsQuery();
   const { data: targetsList, isSuccess: targetsSuccess } = useGetTargetsQuery();
 
   useEffect(() => {

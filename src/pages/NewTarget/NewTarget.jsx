@@ -1,8 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
-//import { useNewTargetMutation } from 'services/target/newTarget';
 import { useAddTargetMutation } from 'services/target/target';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -14,17 +12,13 @@ import target from 'assets/target.svg';
 import smiles from 'assets/smiles.svg';
 
 const NewTarget = () => {
-  const [feedback, setFeedback] = useState({ success: false, loading: false, error: false });
-
   const [state] = useStore();
 
   const t = useTranslation();
 
   const { data: topics = [] } = useGetTopicsQuery();
 
-  //const [newTarget, { isLoading, isSuccess, error }] = useNewTargetMutation();
-
-  const [addTarget, { isLoading, isSuccess, error }] = useAddTargetMutation();
+  const [addTarget, { isLoading, error }] = useAddTargetMutation();
 
   const schema = z.object({
     area: z.string().min(1, { message: t('newTarget.errors') }),
@@ -49,22 +43,6 @@ const NewTarget = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
-
-  const handleFeedback = useCallback(() => {
-    if (isLoading) {
-      setFeedback(prev => ({ ...prev, loading: true }));
-    }
-    if (isSuccess) {
-      setFeedback(prev => ({ ...prev, loading: false, success: true }));
-    }
-    if (error) {
-      setFeedback(prev => ({ ...prev, loading: false, error: true }));
-    }
-  }, [isLoading, isSuccess, error]);
-
-  useEffect(() => {
-    handleFeedback();
-  }, [handleFeedback]);
 
   return (
     <div className="new">
@@ -107,12 +85,12 @@ const NewTarget = () => {
         <div className="new__btn-container--fullwidth">
           <div className="new__btn-container">
             <Button type="submit">
-              {feedback.loading ? t('newTarget.btnSaving') : t('newTarget.btn')}
+              {isLoading ? t('newTarget.btnSaving') : t('newTarget.btn')}
             </Button>
           </div>
         </div>
       </form>
-      {error && <p className="new__error">{error.data.errors.user[0]}</p>}
+      {error && <p className="new__error">{t('newTarget.feedback.error')}</p>}
       <img src={smiles} alt="smiles" className="new__smiles" />
     </div>
   );
