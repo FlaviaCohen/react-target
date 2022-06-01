@@ -23,10 +23,6 @@ const Header = () => {
     setIsContactOpen(!isContactOpen);
   };
 
-  const handleGoBack = () => {
-    history.goBack();
-  };
-
   return (
     <header className={`header ${location.pathname == '/new-target' ? 'bg-lb' : 'bg-w'}`}>
       {location.pathname === '/new-target' ? (
@@ -35,7 +31,7 @@ const Header = () => {
             src={back}
             alt="go back"
             className="header__icon"
-            onClick={handleGoBack}
+            onClick={() => history.goBack()}
             role="presentation"
           />
           <h1 className="header__title">{t('header.newTarget')}</h1>
