@@ -16,6 +16,6 @@ const contactApi = api.injectEndpoints({
 export const {
   useContactMutation,
   endpoints: {
-    contact: { marchFulfilled: contactFulfilled },
+    contact: { matchFulfilled: contactFulfilled },
   },
 } = contactApi;

@@ -1,0 +1,56 @@
+.new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 26%;
+
+  &__target-icon {
+    width: 3rem;
+    margin-top: 1.6rem;
+  }
+
+  &__title {
+    margin: 1rem auto 2.6rem;
+    font-size: 1.1rem;
+  }
+
+  &__form {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__input,
+  &__input:focus,
+  &__input:active {
+    margin-bottom: 1.8rem;
+    text-transform: none;
+  }
+
+  &__btn-container {
+    width: 60%;
+    &--fullwidth {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20rem auto 2rem;
+    }
+  }
+
+  &__select {
+    width: 100%;
+  }
+
+  &__smiles {
+    margin: 2.5rem auto;
+    width: 4.8rem;
+  }
+
+  &__error {
+    color: $error;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: none;
+  }
+}

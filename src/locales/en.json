@@ -4,7 +4,8 @@
   },
   "header": {
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "newTarget": "Create target"
   },
   "home": {
     "welcomeMsg": "Welcome to TARGET",
@@ -64,6 +65,24 @@
       "successSubtitle": "We’ll get back to you as soon as we can.",
       "errorTitle": "Opps!",
       "errorSubtitle": "An error has occured while sending your message."
+    }
+  },
+  "newTarget": {
+    "title": "Create new target",
+    "labels": {
+      "area": "Specify area length (km)",
+      "title": "Target title",
+      "topic": "Select a topic"
+    },
+    "placeholder": {
+      "title": "Choose a title for your target",
+      "topic": "What do you want to talk about?"
+    },
+    "errors": "This field is mandatory",
+    "btnSaving": "Saving...",
+    "btn": "Save target",
+    "feedback": {
+      "error": "Couldn't create your target"
     }
   }
 }
