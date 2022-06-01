@@ -5,7 +5,7 @@ import Input from 'components/form/Input/Input';
 const Select = ({ register, errors, options, placeholder, type, setValue }) => {
   const [isOpen, setisOpen] = useState(false);
 
-  const [, dispatch] = useStore();
+  const [_state, dispatch] = useStore();
 
   const handleDropdown = () => {
     setisOpen(!isOpen);
