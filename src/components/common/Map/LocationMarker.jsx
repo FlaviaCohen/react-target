@@ -53,22 +53,6 @@ const LocationMarker = () => {
   const { data: topicsList, isSuccess: topicsSuccess } = useGetTopicsQuery();
   const { data: targetsList, isSuccess: targetsSuccess } = useGetTargetsQuery();
 
-  const handleIcons = id => {
-    const helper = {};
-
-    for (let i = 0; i < topicsList.topics.length; i++) {
-      helper[topicsList.topics[i].topic.id] = topicsList.topics[i].topic.icon;
-    }
-
-    const icon = new Icon({
-      iconUrl: helper[id],
-      iconRetinaUrl: helper[id],
-      popupAnchor: [-0, -0],
-      iconSize: [46, 46],
-    });
-    return icon.iconUrl ? icon : targetIcon;
-  };
-
   useEffect(() => {
     findLocation();
     handleClick();
@@ -92,7 +76,7 @@ const LocationMarker = () => {
           <Marker
             key={target.id}
             position={{ lat: target.target.lat, lng: target.target.lng }}
-            icon={handleIcons()}
+            icon={targetIcon}
           >
             <Popup>{target.target.title}</Popup>
           </Marker>
