@@ -86,6 +86,16 @@
     }
   },
   "deleteTarget": {
-    "title": "Your target"
+    "title": "Your target",
+    "labels": {
+      "area": "Area length",
+      "title": "Target Title",
+      "topic": "Topic"
+    },
+    "btns": {
+      "delete": "Delete",
+      "save": "Save"
+    },
+    "errors": "This field is mandatory"
   }
 }
