@@ -5,6 +5,7 @@ import Login from 'pages/Login/Login';
 import Profile from 'pages/Profile/Profile';
 import About from 'pages/About/About';
 import NewTarget from 'pages/NewTarget/NewTarget';
+import DeleteTarget from 'pages/DeleteTarget/DeleteTarget';
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
   {
     path: routesPaths.newTarget,
     component: <NewTarget />,
+    private: true,
+  },
+  {
+    path: routesPaths.deleteTarget,
+    component: <DeleteTarget />,
     private: true,
   },
 ];
