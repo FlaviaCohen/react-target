@@ -4,6 +4,11 @@
   flex-direction: column;
   align-items: center;
 
+  &__title {
+    margin: 1rem auto 2.6rem;
+    font-size: 1.1rem;
+  }
+  
   &__label {
     font-size: 1.1rem;
     font-weight: 500;

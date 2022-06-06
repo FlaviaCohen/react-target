@@ -84,5 +84,8 @@
     "feedback": {
       "error": "Couldn't create your target"
     }
+  },
+  "deleteTarget": {
+    "title": "Your target"
   }
 }

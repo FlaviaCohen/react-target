@@ -47,7 +47,7 @@ const NewTarget = () => {
   return (
     <div className="new">
       <img src={target} alt="target" className="new__target-icon" />
-      <p className="new__title">{t('newTarget.title')}</p>
+      <p className="form__title">{t('newTarget.title')}</p>
 
       <form className="new__form" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="area" className="form__label new__label">
