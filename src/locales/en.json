@@ -94,8 +94,9 @@
     },
     "btns": {
       "delete": "Delete",
+      "deleting": "Deleting",
       "save": "Save"
     },
-    "errors": "This field is mandatory"
+    "errors": "Select a target from the map"
   }
 }

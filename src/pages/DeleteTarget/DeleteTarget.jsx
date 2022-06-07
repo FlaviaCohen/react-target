@@ -1,25 +1,29 @@
-import useTranslation from 'hooks/useTranslation';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useGetTopicsQuery } from 'services/target/topics';
+import { useStore } from 'context/Store';
+import useTranslation from 'hooks/useTranslation';
+import { useDeleteTargetMutation } from 'services/target/target';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Input from 'components/form/Input/Input';
-import Select from 'components/form/Select/Select';
 import Button from 'components/common/Button/Button';
 
 const DeleteTarget = () => {
+  const [values, setValues] = useState({ area: 0, title: '' });
+
   const t = useTranslation();
 
-  const { data: topics = [] } = useGetTopicsQuery();
+  const [state] = useStore();
+
+  const [deleteTarget, { isLoading, error }] = useDeleteTargetMutation();
 
   const schema = z.object({
     area: z.string().min(1, { message: t('deleteTarget.errors') }),
     title: z.string().min(1, { message: t('deleteTarget.errors') }),
-    topic: z.string().min(1, { message: t('deleteTarget.errors') }),
   });
 
   const onSubmit = () => {
-    // TODO
+    deleteTarget(state.selectedTarget.id);
   };
 
   const {
@@ -27,6 +31,10 @@ const DeleteTarget = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
+
+  useEffect(() => {
+    setValues({ area: state.selectedTarget.radius, title: state.selectedTarget.title });
+  }, [state]);
 
   return (
     <div className="delete">
@@ -41,6 +49,7 @@ const DeleteTarget = () => {
           name="area"
           className="new__input"
           type="number"
+          value={values.area}
         />
         <label htmlFor="title" className="form__label">
           {t('deleteTarget.labels.title')}
@@ -51,16 +60,15 @@ const DeleteTarget = () => {
           name="title"
           className="new__input"
           type="text"
+          value={values.title}
         />
-        <label htmlFor="topic" className="form__label">
-          {t('deleteTarget.labels.topic')}
-        </label>
-        <div className="delete__select">
-          <Select register={register} options={topics.topics} errors={errors} />
-        </div>
         <div className="delete__btns">
-          <Button>{t('deleteTarget.btns.delete')}</Button>
-          <Button>{t('deleteTarget.btns.save')}</Button>
+          <Button type="submit" className="delete__btn--red">
+            {isLoading ? t('deleteTarget.btns.deleting') : t('deleteTarget.btns.delete')}
+          </Button>
+          <Button disabled={true} className="delete__btn">
+            {t('deleteTarget.btns.save')}
+          </Button>
         </div>
       </form>
     </div>

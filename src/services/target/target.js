@@ -17,7 +17,14 @@ const targetApi = api.injectEndpoints({
       }),
       invalidatesTags: tagTypes.TARGETS,
     }),
+    deleteTarget: builder.mutation({
+      query: id => ({
+        url: `${endpoints.TARGETS}/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: tagTypes.TARGETS,
+    }),
   }),
 });
 
-export const { useGetTargetsQuery, useAddTargetMutation } = targetApi;
+export const { useGetTargetsQuery, useAddTargetMutation, useDeleteTargetMutation } = targetApi;

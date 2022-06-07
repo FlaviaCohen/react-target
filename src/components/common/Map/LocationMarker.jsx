@@ -53,6 +53,11 @@ const LocationMarker = () => {
   const { isSuccess: topicsSuccess } = useGetTopicsQuery();
   const { data: targetsList, isSuccess: targetsSuccess } = useGetTargetsQuery();
 
+  const handleRedirect = target => {
+    dispatch({ type: 'SET_SELECTED_TARGET', payload: target });
+    history.push('/delete-target');
+  };
+
   useEffect(() => {
     findLocation();
     handleClick();
@@ -77,7 +82,7 @@ const LocationMarker = () => {
             key={target.target.id}
             position={{ lat: target.target.lat, lng: target.target.lng }}
             icon={targetIcon}
-            eventHandlers={{ click: () => history.push(`/delete-target/${target.target.id}`) }}
+            eventHandlers={{ click: () => handleRedirect(target) }}
           >
             <Popup>{target.target.title}</Popup>
           </Marker>
