@@ -10,6 +10,7 @@ import Button from 'components/common/Button/Button';
 
 const DeleteTarget = () => {
   const [values, setValues] = useState({ area: 0, title: '' });
+  const [isOpen, setIsOpen] = useState(false);
 
   const t = useTranslation();
 

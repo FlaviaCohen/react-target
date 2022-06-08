@@ -1,0 +1,27 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  background: $aqua;
+
+  &__content {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+  }
+
+  &__actions {
+  }
+
+  &__btn {
+    background: $error;
+  }
+}
