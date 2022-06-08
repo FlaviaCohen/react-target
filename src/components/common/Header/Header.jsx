@@ -24,8 +24,14 @@ const Header = () => {
   };
 
   return (
-    <header className={`header ${location.pathname == '/new-target' ? 'bg-lb' : 'bg-w'}`}>
-      {location.pathname === '/new-target' ? (
+    <header
+      className={`header ${
+        location.pathname == '/new-target' || location.pathname === '/delete-target'
+          ? 'bg-lb'
+          : 'bg-w'
+      }`}
+    >
+      {location.pathname === '/new-target' || location.pathname === '/delete-target' ? (
         <div className="header__actions">
           <img
             src={back}
@@ -34,7 +40,9 @@ const Header = () => {
             onClick={() => history.goBack()}
             role="presentation"
           />
-          <h1 className="header__title">{t('header.newTarget')}</h1>
+          <h1 className="header__title">
+            {location.pathname === '/new-target' ? t('header.newTarget') : t('header.deleteTarget')}
+          </h1>
         </div>
       ) : (
         <div

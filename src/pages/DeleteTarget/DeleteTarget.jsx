@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
 import useTranslation from 'hooks/useTranslation';
@@ -7,35 +7,49 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Input from 'components/form/Input/Input';
 import Button from 'components/common/Button/Button';
+import Modal from 'components/common/Modal/Modal';
 
 const DeleteTarget = () => {
-  const [values, setValues] = useState({ area: 0, title: '' });
   const [isOpen, setIsOpen] = useState(false);
 
   const t = useTranslation();
 
   const [state] = useStore();
 
-  const [deleteTarget, { isLoading, error }] = useDeleteTargetMutation();
+  const [deleteTarget, { isLoading }] = useDeleteTargetMutation();
 
   const schema = z.object({
-    area: z.string().min(1, { message: t('deleteTarget.errors') }),
+    area: z.number().min(1, { message: t('deleteTarget.errors') }),
     title: z.string().min(1, { message: t('deleteTarget.errors') }),
   });
 
-  const onSubmit = () => {
+  const handleClick = () => {
     deleteTarget(state.selectedTarget.id);
+    setIsOpen(false);
+    setValue('area', null);
+    setValue('title', '');
+  };
+
+  const onSubmit = () => {
+    setIsOpen(true);
   };
 
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
+  const handleChange = useCallback(() => {
+    const { radius, title } = state.selectedTarget;
+    setValue('area', radius);
+    setValue('title', title);
+  }, [setValue, state]);
+
   useEffect(() => {
-    setValues({ area: state.selectedTarget.radius, title: state.selectedTarget.title });
-  }, [state]);
+    handleChange();
+  }, [handleChange, state]);
 
   return (
     <div className="delete">
@@ -50,7 +64,7 @@ const DeleteTarget = () => {
           name="area"
           className="new__input"
           type="number"
-          value={values.area}
+          disabled={true}
         />
         <label htmlFor="title" className="form__label">
           {t('deleteTarget.labels.title')}
@@ -61,7 +75,7 @@ const DeleteTarget = () => {
           name="title"
           className="new__input"
           type="text"
-          value={values.title}
+          disabled={true}
         />
         <div className="delete__btns">
           <Button type="submit" className="delete__btn--red">
@@ -72,6 +86,13 @@ const DeleteTarget = () => {
           </Button>
         </div>
       </form>
+      <Modal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        title={t('deleteTarget.modal.title')}
+        btn={t('deleteTarget.modal.btn')}
+        handleClick={handleClick}
+      />
     </div>
   );
 };
