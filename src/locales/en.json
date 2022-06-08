@@ -97,6 +97,10 @@
       "deleting": "Deleting",
       "save": "Save"
     },
-    "errors": "Select a target from the map"
+    "errors": "Select a target from the map",
+    "modal": {
+      "title": "Are you sure you want to delete this target?",
+      "btn": "Delete"
+    }
   }
 }
