@@ -37,7 +37,7 @@ const Header = () => {
             src={back}
             alt="go back"
             className="header__icon"
-            onClick={() => history.goBack()}
+            onClick={() => history.push('/')}
             role="presentation"
           />
           <h1 className="header__title">
