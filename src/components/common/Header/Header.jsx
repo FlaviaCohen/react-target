@@ -23,25 +23,24 @@ const Header = () => {
     setIsContactOpen(!isContactOpen);
   };
 
+  const isNewOrDeletePage =
+    location.pathname === routesPaths.newTarget || location.pathname === routesPaths.deleteTarget;
+
   return (
-    <header
-      className={`header ${
-        location.pathname == '/new-target' || location.pathname === '/delete-target'
-          ? 'bg-lb'
-          : 'bg-w'
-      }`}
-    >
-      {location.pathname === '/new-target' || location.pathname === '/delete-target' ? (
+    <header className={`header ${isNewOrDeletePage ? 'bg-lb' : 'bg-w'}`}>
+      {isNewOrDeletePage ? (
         <div className="header__actions">
           <img
             src={back}
             alt="go back"
             className="header__icon"
-            onClick={() => history.push('/')}
+            onClick={() => history.push(routesPaths.index)}
             role="presentation"
           />
           <h1 className="header__title">
-            {location.pathname === '/new-target' ? t('header.newTarget') : t('header.deleteTarget')}
+            {location.pathname === routesPaths.newTarget
+              ? t('header.newTarget')
+              : t('header.deleteTarget')}
           </h1>
         </div>
       ) : (

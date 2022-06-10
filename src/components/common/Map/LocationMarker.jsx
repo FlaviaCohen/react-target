@@ -55,7 +55,7 @@ const LocationMarker = () => {
 
   const handleRedirect = target => {
     dispatch({ type: 'SET_SELECTED_TARGET', payload: target });
-    history.push('/delete-target');
+    history.push(routesPaths.deleteTarget);
   };
 
   useEffect(() => {
