@@ -19,7 +19,7 @@ const DeleteTarget = () => {
 
   const [state] = useStore();
 
-  const [deleteTarget, { isLoading, isSuccess, error }] = useDeleteTargetMutation();
+  const [deleteTarget, { isLoading, isSuccess }] = useDeleteTargetMutation();
 
   const schema = z.object({
     area: z.number().min(1),
