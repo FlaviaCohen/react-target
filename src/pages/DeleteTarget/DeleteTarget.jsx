@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import { useStore } from 'context/Store';
 import useTranslation from 'hooks/useTranslation';
 import { useDeleteTargetMutation } from 'services/target/target';
@@ -8,22 +9,24 @@ import { z } from 'zod';
 import Input from 'components/form/Input/Input';
 import Button from 'components/common/Button/Button';
 import Modal from 'components/common/Modal/Modal';
+import routesPaths from 'routes/routesPaths';
 
 const DeleteTarget = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const history = useHistory();
   const t = useTranslation();
 
   const [state] = useStore();
 
-  const [deleteTarget, { isLoading }] = useDeleteTargetMutation();
+  const [deleteTarget, { isLoading, isSuccess, error }] = useDeleteTargetMutation();
 
   const schema = z.object({
-    area: z.number().min(1, { message: t('deleteTarget.errors') }),
+    area: z.number().min(1),
     title: z.string().min(1, { message: t('deleteTarget.errors') }),
   });
 
-  const handleClick = () => {
+  const handleDelete = () => {
     deleteTarget(state.selectedTarget.id);
     setIsOpen(false);
     setValue('area', null);
@@ -50,6 +53,10 @@ const DeleteTarget = () => {
   useEffect(() => {
     handleChange();
   }, [handleChange, state]);
+
+  if (isSuccess) {
+    history.push(routesPaths.index);
+  }
 
   return (
     <div className="delete">
@@ -91,7 +98,7 @@ const DeleteTarget = () => {
         setIsOpen={setIsOpen}
         title={t('deleteTarget.modal.title')}
         btn={t('deleteTarget.modal.btn')}
-        handleClick={handleClick}
+        handleClick={handleDelete}
       />
     </div>
   );
