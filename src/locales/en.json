@@ -5,7 +5,8 @@
   "header": {
     "about": "About",
     "contact": "Contact",
-    "newTarget": "Create target"
+    "newTarget": "Create target",
+    "deleteTarget": "Delete target"
   },
   "home": {
     "welcomeMsg": "Welcome to TARGET",
@@ -83,6 +84,24 @@
     "btn": "Save target",
     "feedback": {
       "error": "Couldn't create your target"
+    }
+  },
+  "deleteTarget": {
+    "title": "Your target",
+    "labels": {
+      "area": "Area length",
+      "title": "Target Title",
+      "topic": "Topic"
+    },
+    "btns": {
+      "delete": "Delete",
+      "deleting": "Deleting",
+      "save": "Save"
+    },
+    "errors": "Select a target from the map",
+    "modal": {
+      "title": "Are you sure you want to delete this target?",
+      "btn": "Delete"
     }
   }
 }

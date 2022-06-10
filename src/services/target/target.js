@@ -7,7 +7,7 @@ const targetApi = api.injectEndpoints({
       query: () => ({
         url: endpoints.TARGETS,
       }),
-      providesTags: tagTypes.TARGETS,
+      providesTags: [tagTypes.TARGETS],
     }),
     addTarget: builder.mutation({
       query: body => ({
@@ -15,9 +15,16 @@ const targetApi = api.injectEndpoints({
         method: 'POST',
         body,
       }),
-      invalidatesTags: tagTypes.TARGETS,
+      invalidatesTags: [tagTypes.TARGETS],
+    }),
+    deleteTarget: builder.mutation({
+      query: id => ({
+        url: `${endpoints.TARGETS}/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [tagTypes.TARGETS],
     }),
   }),
 });
 
-export const { useGetTargetsQuery, useAddTargetMutation } = targetApi;
+export const { useGetTargetsQuery, useAddTargetMutation, useDeleteTargetMutation } = targetApi;

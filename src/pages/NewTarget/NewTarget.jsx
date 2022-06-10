@@ -2,9 +2,9 @@ import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
 import { useAddTargetMutation } from 'services/target/target';
+import { useGetTopicsQuery } from 'services/target/topics';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useGetTopicsQuery } from 'services/target/topics';
 import Input from 'components/form/Input/Input';
 import Select from 'components/form/Select/Select';
 import Button from 'components/common/Button/Button';
@@ -18,7 +18,7 @@ const NewTarget = () => {
 
   const { data: topics = [] } = useGetTopicsQuery();
 
-  const [addTarget, { isLoading, error }] = useAddTargetMutation();
+  const [addTarget, { isLoading, isSuccess, error }] = useAddTargetMutation();
 
   const schema = z.object({
     area: z.string().min(1, { message: t('newTarget.errors') }),
@@ -47,7 +47,7 @@ const NewTarget = () => {
   return (
     <div className="new">
       <img src={target} alt="target" className="new__target-icon" />
-      <p className="new__title">{t('newTarget.title')}</p>
+      <p className="form__title">{t('newTarget.title')}</p>
 
       <form className="new__form" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="area" className="form__label new__label">

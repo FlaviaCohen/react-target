@@ -11,13 +11,14 @@
 @import './layout/header';
 
 // COMPONENTS
-@import './components/input';
 @import './components/button';
-@import './components/loading';
+@import './components/contact';
 @import './components/form';
+@import './components/input';
+@import './components/loading';
 @import './components/logoutButton';
 @import './components/map';
-@import './components/contact';
+@import './components/modal';
 @import './components/select';
 
 // PAGES
@@ -29,3 +30,4 @@
 @import './pages/profile';
 @import './pages/about';
 @import './pages/newTarget';
+@import './pages/deleteTarget';

@@ -53,6 +53,11 @@ const LocationMarker = () => {
   const { isSuccess: topicsSuccess } = useGetTopicsQuery();
   const { data: targetsList, isSuccess: targetsSuccess } = useGetTargetsQuery();
 
+  const handleRedirect = target => {
+    dispatch({ type: 'SET_SELECTED_TARGET', payload: target });
+    history.push(routesPaths.deleteTarget);
+  };
+
   useEffect(() => {
     findLocation();
     handleClick();
@@ -61,12 +66,12 @@ const LocationMarker = () => {
   return (
     <>
       {position && (
-        <Marker position={position} icon={markerIcon}>
+        <Marker key="my-location" position={position} icon={markerIcon}>
           <Popup>You are here.</Popup>
         </Marker>
       )}
       {newTarget && (
-        <Marker position={newTarget} icon={targetIcon}>
+        <Marker key="new-target" position={newTarget} icon={targetIcon}>
           <Popup>You are here.</Popup>
         </Marker>
       )}
@@ -74,9 +79,10 @@ const LocationMarker = () => {
         topicsSuccess &&
         targetsList.targets.map(target => (
           <Marker
-            key={target.id}
+            key={target.target.id}
             position={{ lat: target.target.lat, lng: target.target.lng }}
             icon={targetIcon}
+            eventHandlers={{ click: () => handleRedirect(target) }}
           >
             <Popup>{target.target.title}</Popup>
           </Marker>
