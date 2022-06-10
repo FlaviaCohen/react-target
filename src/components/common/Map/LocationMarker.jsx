@@ -27,7 +27,7 @@ const LocationMarker = () => {
   const [position, setPosition] = useState(null);
   const [newTarget, setNewTarget] = useState(null);
 
-  const [_state, dispatch] = useStore();
+  const [, dispatch] = useStore();
   const map = useMap();
   const history = useHistory();
 

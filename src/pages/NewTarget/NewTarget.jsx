@@ -18,7 +18,7 @@ const NewTarget = () => {
 
   const { data: topics = [] } = useGetTopicsQuery();
 
-  const [addTarget, { isLoading, isSuccess, error }] = useAddTargetMutation();
+  const [addTarget, { isLoading, error }] = useAddTargetMutation();
 
   const schema = z.object({
     area: z.string().min(1, { message: t('newTarget.errors') }),
