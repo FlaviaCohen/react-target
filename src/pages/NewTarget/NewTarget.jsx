@@ -58,7 +58,6 @@ const NewTarget = () => {
 
   return (
     <div className="new">
-      {console.log(error)}
       <img src={target} alt="target" className="new__target-icon" />
       <p className="form__title">{t('newTarget.title')}</p>
       <form className="new__form" onSubmit={handleSubmit(onSubmit)}>
