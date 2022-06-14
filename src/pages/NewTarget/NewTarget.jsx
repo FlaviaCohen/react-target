@@ -58,9 +58,9 @@ const NewTarget = () => {
 
   return (
     <div className="new">
+      {console.log(error)}
       <img src={target} alt="target" className="new__target-icon" />
       <p className="form__title">{t('newTarget.title')}</p>
-
       <form className="new__form" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="area" className="form__label new__label">
           {t('newTarget.labels.area')}
@@ -102,7 +102,13 @@ const NewTarget = () => {
           </div>
         </div>
       </form>
-      {error && <p className="new__error">{t('newTarget.feedback.error')}</p>}
+      {error && (
+        <p className="new__error">
+          {error.data.errors.targets_limit
+            ? t('newTarget.feedback.limit')
+            : t('newTarget.feedback.error')}
+        </p>
+      )}
       <img src={smiles} alt="smiles" className="new__smiles" />
     </div>
   );

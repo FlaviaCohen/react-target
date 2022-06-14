@@ -83,7 +83,8 @@
     "btnSaving": "Saving...",
     "btn": "Save target",
     "feedback": {
-      "error": "Couldn't create your target"
+      "error": "Couldn't create your target",
+      "limit": "You've riched your 10 targets limit"
     }
   },
   "deleteTarget": {
