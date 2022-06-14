@@ -1,3 +1,4 @@
+import { useEffect, useCallback } from 'react';
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
@@ -18,7 +19,7 @@ const NewTarget = () => {
 
   const { data: topics = [] } = useGetTopicsQuery();
 
-  const [addTarget, { isLoading, error }] = useAddTargetMutation();
+  const [addTarget, { isLoading, error, isSuccess }] = useAddTargetMutation();
 
   const schema = z.object({
     area: z.string().min(1, { message: t('newTarget.errors') }),
@@ -41,14 +42,24 @@ const NewTarget = () => {
     register,
     setValue,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
+
+  const resetForm = useCallback(() => {
+    if (isSuccess) {
+      reset();
+    }
+  }, [isSuccess, reset]);
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   return (
     <div className="new">
       <img src={target} alt="target" className="new__target-icon" />
       <p className="form__title">{t('newTarget.title')}</p>
-
       <form className="new__form" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="area" className="form__label new__label">
           {t('newTarget.labels.area')}
@@ -90,7 +101,13 @@ const NewTarget = () => {
           </div>
         </div>
       </form>
-      {error && <p className="new__error">{t('newTarget.feedback.error')}</p>}
+      {error && (
+        <p className="new__error">
+          {error.data.errors.targets_limit
+            ? t('newTarget.feedback.limit')
+            : t('newTarget.feedback.error')}
+        </p>
+      )}
       <img src={smiles} alt="smiles" className="new__smiles" />
     </div>
   );
