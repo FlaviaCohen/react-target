@@ -1,3 +1,4 @@
+import { useEffect, useCallback } from 'react';
 import useTranslation from 'hooks/useTranslation';
 import { useForm } from 'react-hook-form';
 import { useStore } from 'context/Store';
@@ -18,7 +19,7 @@ const NewTarget = () => {
 
   const { data: topics = [] } = useGetTopicsQuery();
 
-  const [addTarget, { isLoading, error }] = useAddTargetMutation();
+  const [addTarget, { isLoading, error, isSuccess }] = useAddTargetMutation();
 
   const schema = z.object({
     area: z.string().min(1, { message: t('newTarget.errors') }),
@@ -41,8 +42,19 @@ const NewTarget = () => {
     register,
     setValue,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
+
+  const resetForm = useCallback(() => {
+    if (isSuccess) {
+      reset();
+    }
+  }, [isSuccess, reset]);
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   return (
     <div className="new">
